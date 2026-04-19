@@ -35,8 +35,20 @@ body {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    color: white;
 }
 
 .nav-links {
@@ -68,6 +80,17 @@ body {
     font-size: 3rem;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease;
+}
+
+.hero-logo {
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-logo-img {
+    max-width: 200px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
 
 .hero p {
