@@ -78,10 +78,10 @@ body {
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 100px 0;
+    padding: 150px 0 100px;
     text-align: center;
     margin-top: 60px;
-    min-height: auto;
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
