@@ -88,7 +88,7 @@ const translations = {
         service_data_desc: 'Full-process data services: collection, cleaning, calibration, model training, ensuring high-quality data to support AI systems',
         section_partners: 'Partners',
         partners_note: '(In no particular order)',
-        footer_copyright: '&copy; 2026 Shanghai Chengyun Zhike Information Technology Co., Ltd. (Cy.AI). All rights reserved.'
+        footer_copyright: '&copy; 2026 Shanghai CYAI Information Technology Co., Ltd. (Cy.AI). All rights reserved.'
     }
 };
 
