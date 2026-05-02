@@ -78,14 +78,16 @@ body {
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 150px 0 100px;
+    padding: 0;
     text-align: center;
     margin-top: 60px;
-    min-height: 600px;
+    min-height: auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
+    aspect-ratio: 16/9;
 }
 
 .hero::before {
