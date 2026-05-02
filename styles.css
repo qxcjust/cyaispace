@@ -76,11 +76,15 @@ body {
 
 /* 首页横幅 */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7)),
+                url('../images/robot-bg.jpg') center/cover no-repeat;
     color: white;
     padding: 150px 0 100px;
     text-align: center;
     margin-top: 60px;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
 }
 
 .hero h1 {
