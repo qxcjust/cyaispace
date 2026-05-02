@@ -106,11 +106,12 @@ body {
 .hero .container {
     position: relative;
     z-index: 1;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    height: 100%;
 }
 
 .hero-content-card {
@@ -124,7 +125,8 @@ body {
     text-align: center;
     max-width: 700px;
     width: fit-content;
-    margin-right: 40px;
+    position: relative;
+    right: 40px;
 }
 
 .hero-content-card p {
