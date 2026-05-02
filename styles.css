@@ -569,6 +569,24 @@ body {
     .contact h2 {
         font-size: 2rem;
     }
+    
+    /* 产品矩阵 - 单列 */
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* 服务矩阵 - 单列 */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* 合作伙伴 - 2列 */
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
 }
 
 /* 响应式设计 - 手机 */
@@ -624,5 +642,23 @@ body {
     .services,
     .contact {
         padding: 50px 0;
+    }
+    
+    /* 产品矩阵 - 单列 */
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* 服务矩阵 - 单列 */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* 合作伙伴 - 2列 */
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 }
