@@ -94,10 +94,10 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 5%;
+    transform: translateY(-50%);
     width: 40%;
-    height: 40%;
+    height: 80%;
     background: url('../images/robot-bg-cropped.jpg') center center/contain no-repeat;
     opacity: 0.35;
     filter: saturate(0.5) blur(1px);
