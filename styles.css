@@ -134,8 +134,13 @@ body {
 
 .hero-content-card p {
     margin: 0;
-    line-height: 1.6;
+    padding: 0;
+    line-height: 1.8;
     font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero h1 {
