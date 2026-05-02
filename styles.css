@@ -93,8 +93,8 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 80%;
     height: 100%;
     background: url('../images/robot-bg-cropped.jpg') center center/contain no-repeat;
@@ -287,7 +287,7 @@ body {
     }
     
     .hero {
-        padding: 180px 0 20px;
+        padding: 120px 0 20px;
         min-height: 300px;
         margin-top: 100px;
     }
@@ -333,7 +333,7 @@ body {
     }
     
     .hero {
-        padding: 180px 0 15px;
+        padding: 100px 0 15px;
         min-height: 280px;
         margin-top: 110px;
     }
