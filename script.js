@@ -95,6 +95,42 @@ const translations = {
         contact_phone: 'Phone:',
         contact_email: 'Email:',
         footer_copyright: '&copy; 2026 Shanghai CYAI Information Technology Co., Ltd. (Cy.AI). All rights reserved.'
+    },
+    ja: {
+        company_name: '誠雲智科 CYAISPACE',
+        nav_home: 'ホーム',
+        nav_products: '製品マトリクス',
+        nav_services: 'サービスマトリクス',
+        nav_partners: 'パートナー',
+        hero_description: '20年以上の精密機器開発経験、知覚とヒューマンコンピュータインタラクションシステムに特化し、<br>自動車、IoT、具現化知能などの分野で統合的なハードウェアおよびソフトウェア製品とサービスを提供します。',
+        section_products: '製品マトリクス',
+        product_mic: '🎙️ マイクアレイ',
+        product_mic_desc: '高精度マイクアレイ、マルチシナリオでの集音とノイズキャンセリングをサポート',
+        product_speaker: '🔊 スピーカー',
+        product_speaker_desc: '高品質オーディオ出力デバイス、音声の詳細を鮮明に再現',
+        product_camera: '📷 カメラ',
+        product_camera_desc: 'インテリジェントビジュアルキャプチャデバイス、マルチシナリオ画像認識をサポート',
+        product_radar: '📡 ミリ波レーダー',
+        product_radar_desc: '高精度レーダーセンサー、正確な検出と知覚',
+        product_antenna: '📶 アンテナ',
+        product_antenna_desc: '高性能アンテナモジュール、安定した信頼性の高い信号伝送',
+        product_aibrain: '🧠 AIBrain',
+        product_aibrain_desc: '人工知能ブレイン、マルチモーダル知覚とインテリジェント意思決定',
+        section_services: 'サービスマトリクス',
+        service_voice: '🎙️ 音声フロントエンド処理と最適化',
+        service_voice_desc: '従来の信号処理とDNNアルゴリズムを組み合わせ、64Hz精度調整、65dBエコーキャンセレーション、25dBノイズ抑制をサポート、100以上の音響シナリオをカバー',
+        service_multilang: '💬 多言語会話カスタマイズサービス',
+        service_multilang_desc: '多国語のカスタム開発、方言認識、パーソナライズされた音声対話ソリューション設計をサポート',
+        service_llm: '🧠 大規模モデルカスタム開発サービス',
+        service_llm_desc: '先進の大規模モデル技術に基づき、マルチ意図理解、クロスドメインコンテキスト、高信頼性、低遅延のAIソリューションを提供',
+        service_data: '📊 データ収集・クリーニング・トレーニング',
+        service_data_desc: 'フルプロセスデータサービス：収集、クリーニング、キャリブレーション、モデルトレーニング、AIシステムを支える高品質データを確保',
+        section_partners: 'パートナー',
+        partners_note: '（順不同）',
+        contact_name: '連絡先：',
+        contact_phone: '電話：',
+        contact_email: 'メール：',
+        footer_copyright: '&copy; 2026 上海誠雲智科信息技術有限公司 (Cy.AI). 全著作権所有。'
     }
 };
 
@@ -104,7 +140,12 @@ function switchLanguage(lang) {
     localStorage.setItem('preferred-language', lang);
     
     // 更新HTML lang属性
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    const langMap = {
+        'zh': 'zh-CN',
+        'en': 'en',
+        'ja': 'ja'
+    };
+    document.documentElement.lang = langMap[lang] || 'zh-CN';
     
     // 更新所有带有data-i18n属性的元素
     document.querySelectorAll('[data-i18n]').forEach(element => {
