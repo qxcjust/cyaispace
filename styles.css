@@ -517,6 +517,12 @@ body {
     flex-wrap: wrap;
 }
 
+.footer-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .wechat-icon-wrapper {
     position: relative;
     cursor: pointer;
@@ -627,6 +633,73 @@ body {
 }
 
 .contact-icon-wrapper:hover .contact-info-popup {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 语言切换器 */
+.language-switcher {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.language-icon {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.language-icon:hover {
+    transform: scale(1.1);
+}
+
+.language-dropdown {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    background: white;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    min-width: 120px;
+}
+
+.language-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: white;
+}
+
+.language-option {
+    padding: 8px 20px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-align: center;
+}
+
+.language-option:hover {
+    background: #f0f0f0;
+}
+
+.language-option.active {
+    background: #667eea;
+    color: white;
+}
+
+.language-switcher:hover .language-dropdown {
     opacity: 1;
     visibility: visible;
 }
@@ -788,6 +861,10 @@ body {
     
     .footer-content {
         flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .footer-icons {
         gap: 1rem;
     }
     
