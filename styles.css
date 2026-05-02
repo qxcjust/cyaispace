@@ -334,8 +334,8 @@ body {
     
     .hero {
         padding: 100px 0 15px;
-        min-height: 280px;
-        margin-top: 110px;
+        min-height: 250px;
+        margin-top: 0;
     }
     
     .hero::before {
