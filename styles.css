@@ -78,7 +78,7 @@ body {
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 0;
+    padding: 100px 0;
     text-align: center;
     margin-top: 60px;
     min-height: auto;
@@ -87,7 +87,6 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    aspect-ratio: 16/9;
 }
 
 .hero::before {
