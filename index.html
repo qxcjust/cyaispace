@@ -7,13 +7,16 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="styles.css">
+    <!-- 预加载关键图片 -->
+    <link rel="preload" href="images/robot-bg-cropped.jpg" as="image">
+    <link rel="preload" href="images/logo-optimized.jpg" as="image">
 </head>
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="images/logo-optimized.jpg" alt="誠雲智科CYAISPACE" class="logo-img">
+                <img src="images/logo-optimized.jpg" alt="誠雲智科CYAISPACE" class="logo-img" loading="eager">
                 <span class="logo-text">誠雲智科 CYAISPACE</span>
             </div>
             <ul class="nav-links">

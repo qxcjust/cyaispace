@@ -97,10 +97,37 @@ body {
     transform: translate(-50%, -50%);
     width: 80%;
     height: 100%;
-    background: url('../images/robot-bg-cropped.jpg') center center/contain no-repeat;
+    /* 先显示渐变背景作为占位符 */
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 50%, rgba(240, 147, 251, 0.3) 100%);
     opacity: 0.35;
+    z-index: 0;
+    animation: fadeInGradient 0.3s ease;
+}
+
+@keyframes fadeInGradient {
+    from { opacity: 0; }
+    to { opacity: 0.35; }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 100%;
+    /* JPG图片延迟加载，带有淡入效果 */
+    background: url('../images/robot-bg-cropped.jpg') center center/contain no-repeat;
+    opacity: 0;
     filter: saturate(0.5) blur(1px);
     z-index: 0;
+    animation: fadeInImage 0.8s ease 0.2s forwards;
+}
+
+@keyframes fadeInImage {
+    from { opacity: 0; }
+    to { opacity: 0.35; }
 }
 
 .hero .container {
