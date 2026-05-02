@@ -671,6 +671,12 @@ body {
     min-width: 120px;
 }
 
+.language-switcher:hover .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
 .language-dropdown::after {
     content: '';
     position: absolute;
@@ -697,11 +703,6 @@ body {
 .language-option.active {
     background: #667eea;
     color: white;
-}
-
-.language-switcher:hover .language-dropdown {
-    opacity: 1;
-    visibility: visible;
 }
 
 /* 动画 */
