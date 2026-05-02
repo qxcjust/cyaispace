@@ -111,6 +111,7 @@ body {
     align-items: flex-end;
     justify-content: center;
     height: 100%;
+    padding-right: 40px;
 }
 
 .hero-content-card {
