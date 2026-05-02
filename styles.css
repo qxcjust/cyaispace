@@ -572,6 +572,65 @@ body {
     visibility: visible;
 }
 
+.contact-icon-wrapper {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.contact-icon {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.contact-icon:hover {
+    transform: scale(1.1);
+}
+
+.contact-info-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.contact-info-popup::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: white;
+}
+
+.contact-info-popup p {
+    margin: 5px 0;
+}
+
+.contact-info-popup strong {
+    color: #667eea;
+}
+
+.contact-icon-wrapper:hover .contact-info-popup {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* 动画 */
 @keyframes fadeInUp {
     from {
@@ -742,5 +801,12 @@ body {
         height: 150px;
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
+    }
+    
+    .contact-info-popup {
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
+        padding: 10px 15px;
     }
 }
