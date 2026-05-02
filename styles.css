@@ -91,22 +91,15 @@ body {
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('../images/robot-bg-cropped.jpg') center center/cover no-repeat;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: url('../images/robot-bg-cropped.jpg') center center/contain no-repeat;
     opacity: 0.25;
     filter: saturate(0.5) blur(1px);
     z-index: 0;
-}
-
-/* 响应式：移动端优化 */
-@media (max-width: 768px) {
-    .hero::before {
-        background-position: left center;
-        background-size: contain;
-    }
 }
 
 .hero .container {
