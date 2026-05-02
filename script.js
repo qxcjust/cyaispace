@@ -56,6 +56,7 @@ const translations = {
         section_partners: '合作伙伴',
         partners_note: '（排名不分先后）',
         contact_name: '联系人：',
+        contact_person: '秦先生',
         contact_phone: '电话：',
         contact_email: '邮箱：',
         footer_copyright: '&copy; 2026 上海诚云智科信息科技有限公司 (Cy.AI). 保留所有权利。'
@@ -92,6 +93,7 @@ const translations = {
         section_partners: 'Partners',
         partners_note: '(In no particular order)',
         contact_name: 'Contact:',
+        contact_person: 'Mr. Qin',
         contact_phone: 'Phone:',
         contact_email: 'Email:',
         footer_copyright: '&copy; 2026 Shanghai CYAI Information Technology Co., Ltd. (Cy.AI). All rights reserved.'
@@ -128,6 +130,7 @@ const translations = {
         section_partners: 'パートナー',
         partners_note: '（順不同）',
         contact_name: '連絡先：',
+        contact_person: '秦さん',
         contact_phone: '電話：',
         contact_email: 'メール：',
         footer_copyright: '&copy; 2026 上海誠雲智科信息技術有限公司 (Cy.AI). 全著作権所有。'
