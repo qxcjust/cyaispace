@@ -55,6 +55,9 @@ const translations = {
         service_data_desc: '全流程数据服务：采集、清洗、标定、模型训练，确保高质量数据支撑AI系统',
         section_partners: '合作伙伴',
         partners_note: '（排名不分先后）',
+        contact_name: '联系人：',
+        contact_phone: '电话：',
+        contact_email: '邮箱：',
         footer_copyright: '&copy; 2026 上海诚云智科信息科技有限公司 (Cy.AI). 保留所有权利。'
     },
     en: {
@@ -88,6 +91,9 @@ const translations = {
         service_data_desc: 'Full-process data services: collection, cleaning, calibration, model training, ensuring high-quality data to support AI systems',
         section_partners: 'Partners',
         partners_note: '(In no particular order)',
+        contact_name: 'Contact:',
+        contact_phone: 'Phone:',
+        contact_email: 'Email:',
         footer_copyright: '&copy; 2026 Shanghai CYAI Information Technology Co., Ltd. (Cy.AI). All rights reserved.'
     }
 };
