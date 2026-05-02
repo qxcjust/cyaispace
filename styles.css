@@ -78,10 +78,10 @@ body {
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 80px 0 60px;
+    padding: 150px 0 100px;
     text-align: center;
     margin-top: 60px;
-    min-height: 300px;
+    min-height: 600px;
     display: flex;
     align-items: center;
     position: relative;
@@ -95,7 +95,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../images/robot-bg-optimized.jpg') center/cover no-repeat;
+    background: url('../images/robot-bg-optimized.jpg') left center/cover no-repeat;
     opacity: 0.25;
     filter: saturate(0.5) blur(1px);
     z-index: 0;
