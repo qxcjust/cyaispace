@@ -442,10 +442,6 @@ body {
 }
 
 .partner-logo {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -454,15 +450,21 @@ body {
 }
 
 .partner-logo:hover {
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transform: translateY(-5px);
+    transform: scale(1.05);
 }
 
-.partner-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #667eea;
-    text-align: center;
+.partner-logo img {
+    max-width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.partner-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
 }
 
 .partners-hint {
