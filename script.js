@@ -25,7 +25,7 @@ window.addEventListener('scroll', function() {
 // 翻译字典
 const translations = {
     zh: {
-        company_name: '誠雲智科 CYAISPACE',
+        company_name: '誠雲智科 Cy.AI',
         nav_home: '首页',
         nav_products: '产品矩阵',
         nav_services: '服务矩阵',
@@ -96,10 +96,10 @@ const translations = {
         contact_person: 'Mr. Qin',
         contact_phone: 'Phone:',
         contact_email: 'Email:',
-        footer_copyright: '&copy; 2026 Shanghai CYAI Information Technology Co., Ltd. (Cy.AI). All rights reserved.'
+        footer_copyright: '&copy; 2026 Shanghai Cy.AI Information Technology Co., Ltd. (Cy.AI). All rights reserved.'
     },
     ja: {
-        company_name: '誠雲智科 CYAISPACE',
+        company_name: '誠雲智科 Cy.AI',
         nav_home: 'ホーム',
         nav_products: '製品マトリクス',
         nav_services: 'サービスマトリクス',
