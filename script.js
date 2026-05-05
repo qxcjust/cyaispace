@@ -62,7 +62,7 @@ const translations = {
         footer_copyright: '&copy; 2026 上海诚云智科信息科技有限公司 (Cy.AI). 保留所有权利。'
     },
     en: {
-        company_name: 'CYAISPACE',
+        company_name: 'Cy.AI',
         nav_home: 'Home',
         nav_products: 'Products',
         nav_services: 'Services',
