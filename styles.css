@@ -294,6 +294,12 @@ body {
     background: white;
 }
 
+.product-card.expanded {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    background: white;
+}
+
 .product-card h3 {
     font-size: 1.6rem;
     margin-bottom: 1rem;
@@ -308,6 +314,74 @@ body {
     color: #555;
     line-height: 1.8;
     font-size: 1rem;
+}
+
+.expand-hint {
+    text-align: center;
+    color: #667eea;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .expand-hint {
+    opacity: 1;
+}
+
+.product-card.expanded .expand-hint {
+    display: none;
+}
+
+/* 产品详细信息 */
+.product-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.product-card.expanded .product-details {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 1.5rem;
+}
+
+.details-content {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    border-radius: 12px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.details-content h4 {
+    color: #667eea;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.details-content h4:first-child {
+    margin-top: 0;
+}
+
+.details-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details-content li {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    padding: 0.3rem 0;
+}
+
+.product-card {
+    cursor: pointer;
 }
 
 /* 服务矩阵 */

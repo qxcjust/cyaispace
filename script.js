@@ -12,6 +12,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// 产品卡片点击展开功能
+document.addEventListener('DOMContentLoaded', function() {
+    const productCards = document.querySelectorAll('.product-card[data-product]');
+    
+    productCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // 防止点击内部链接时触发
+            if (e.target.tagName === 'A') return;
+            
+            // 切换展开状态
+            const isExpanded = this.classList.toggle('expanded');
+            
+            // 阻止事件冒泡，避免触发其他事件
+            e.stopPropagation();
+        });
+    });
+});
+
 // 导航栏滚动效果
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
@@ -34,6 +52,18 @@ const translations = {
         section_products: '产品矩阵',
         product_mic: '🎙️ 阵列麦克风',
         product_mic_desc: '高精度麦克风阵列，支持多场景拾音与降噪',
+        product_mic_details_title: '技术规格',
+        product_mic_detail_1: '• 通道数：4-8通道可配置',
+        product_mic_detail_2: '• 频率响应：20Hz - 20kHz',
+        product_mic_detail_3: '• 信噪比：≥65dB',
+        product_mic_detail_4: '• 指向性：全向/定向可选',
+        product_mic_detail_5: '• 工作温度：-40°C ~ +85°C',
+        product_mic_features_title: '核心优势',
+        product_mic_feature_1: '✓ 智能波束成形技术',
+        product_mic_feature_2: '✓ 实时噪声抑制算法',
+        product_mic_feature_3: '✓ 多场景自适应优化',
+        product_mic_feature_4: '✓ 低功耗设计',
+        expand_hint: '👇 点击查看详情',
         product_speaker: '🔊 喇叭',
         product_speaker_desc: '高品质音频输出设备，清晰还原声音细节',
         product_camera: '📷 摄像头',
@@ -71,6 +101,18 @@ const translations = {
         section_products: 'Product Matrix',
         product_mic: '🎙️ Microphone Array',
         product_mic_desc: 'High-precision microphone array supporting multi-scenario pickup and noise reduction',
+        product_mic_details_title: 'Technical Specifications',
+        product_mic_detail_1: '• Channels: 4-8 configurable channels',
+        product_mic_detail_2: '• Frequency Response: 20Hz - 20kHz',
+        product_mic_detail_3: '• Signal-to-Noise Ratio: ≥65dB',
+        product_mic_detail_4: '• Directivity: Omnidirectional/Directional optional',
+        product_mic_detail_5: '• Operating Temperature: -40°C ~ +85°C',
+        product_mic_features_title: 'Key Features',
+        product_mic_feature_1: '✓ Intelligent beamforming technology',
+        product_mic_feature_2: '✓ Real-time noise suppression algorithm',
+        product_mic_feature_3: '✓ Multi-scenario adaptive optimization',
+        product_mic_feature_4: '✓ Low power consumption design',
+        expand_hint: '👇 Click to view details',
         product_speaker: '🔊 Speaker',
         product_speaker_desc: 'High-quality audio output device, clearly reproducing sound details',
         product_camera: '📷 Camera',
@@ -108,6 +150,18 @@ const translations = {
         section_products: '製品マトリクス',
         product_mic: '🎙️ マイクアレイ',
         product_mic_desc: '高精度マイクアレイ、マルチシナリオでの集音とノイズキャンセリングをサポート',
+        product_mic_details_title: '技術仕様',
+        product_mic_detail_1: '• チャンネル数：4-8チャンネル設定可能',
+        product_mic_detail_2: '• 周波数応答：20Hz - 20kHz',
+        product_mic_detail_3: '• 信号対雑音比：≥65dB',
+        product_mic_detail_4: '• 指向性：全方向/指向性選択可能',
+        product_mic_detail_5: '• 動作温度：-40°C ~ +85°C',
+        product_mic_features_title: '主な特徴',
+        product_mic_feature_1: '✓ インテリジェントビームフォーミング技術',
+        product_mic_feature_2: '✓ リアルタイムノイズ抑制アルゴリズム',
+        product_mic_feature_3: '✓ マルチシナリオ適応最適化',
+        product_mic_feature_4: '✓ 低消費電力設計',
+        expand_hint: '👇 クリックして詳細を表示',
         product_speaker: '🔊 スピーカー',
         product_speaker_desc: '高品質オーディオ出力デバイス、音声の詳細を鮮明に再現',
         product_camera: '📷 カメラ',
