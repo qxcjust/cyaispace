@@ -284,11 +284,12 @@ body {
     transition: transform 0.4s ease;
 }
 
-.product-card:hover::before {
+/* 只有带 data-product 属性的卡片才有悬停效果 */
+.product-card[data-product]:hover::before {
     transform: scaleX(1);
 }
 
-.product-card:hover {
+.product-card[data-product]:hover {
     transform: translateY(-15px) scale(1.02);
     box-shadow: 0 20px 60px rgba(0,0,0,0.25);
     background: white;
@@ -311,6 +312,55 @@ body {
     color: #555;
     line-height: 1.8;
     font-size: 1rem;
+}
+
+/* 建设中效果 */
+.product-card.under-construction,
+.service-card.under-construction {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.product-card.under-construction:hover,
+.service-card.under-construction:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.18);
+}
+
+.product-card.under-construction::after,
+.service-card.under-construction::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+    pointer-events: none;
+}
+
+.construction-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #ffa726, #fb8c00);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow: 0 3px 10px rgba(255,167,38,0.3);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .expand-hint {
@@ -572,15 +622,16 @@ body {
     transition: transform 0.4s ease;
 }
 
-.service-card:hover::before {
+/* .service-card:hover::before {
     transform: scaleX(1);
-}
+} */
 
-.service-card:hover {
+/* 暂时取消悬停动画效果 */
+/* .service-card:hover {
     transform: translateY(-15px) scale(1.02);
     box-shadow: 0 20px 60px rgba(0,0,0,0.25);
     background: white;
-}
+} */
 
 .service-card h3 {
     font-size: 1.6rem;
