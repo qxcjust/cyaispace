@@ -12,22 +12,126 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 产品卡片点击展开功能
+// 产品卡片点击展开功能 - 弹窗方式
 document.addEventListener('DOMContentLoaded', function() {
     const productCards = document.querySelectorAll('.product-card[data-product]');
+    const modal = document.getElementById('productModal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalSpecs = document.getElementById('modalSpecs');
+    const modalFeatures = document.getElementById('modalFeatures');
     
+    // 产品信息数据
+    const productData = {
+        mic: {
+            title: '️ 阵列麦克风',
+            titleKey: 'product_mic',
+            description: '高精度麦克风阵列，支持多场景拾音与降噪',
+            descriptionKey: 'product_mic_desc',
+            specs: [
+                { key: 'product_mic_detail_1' },
+                { key: 'product_mic_detail_2' },
+                { key: 'product_mic_detail_3' },
+                { key: 'product_mic_detail_4' },
+                { key: 'product_mic_detail_5' }
+            ],
+            features: [
+                { key: 'product_mic_feature_1' },
+                { key: 'product_mic_feature_2' },
+                { key: 'product_mic_feature_3' },
+                { key: 'product_mic_feature_4' }
+            ]
+        }
+    };
+    
+    // 获取当前语言
+    function getCurrentLang() {
+        return localStorage.getItem('preferred-language') || 'zh';
+    }
+    
+    // 更新弹窗内容
+    function updateModalContent(productType) {
+        const lang = getCurrentLang();
+        const data = productData[productType];
+        
+        if (!data) return;
+        
+        // 更新标题
+        modalTitle.textContent = translations[lang][data.titleKey] || data.title;
+        
+        // 更新描述
+        modalDescription.textContent = translations[lang][data.descriptionKey] || data.description;
+        
+        // 更新技术规格
+        modalSpecs.innerHTML = '';
+        data.specs.forEach(spec => {
+            const li = document.createElement('li');
+            li.textContent = translations[lang][spec.key] || spec.key;
+            modalSpecs.appendChild(li);
+        });
+        
+        // 更新核心优势
+        modalFeatures.innerHTML = '';
+        data.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = translations[lang][feature.key] || feature.key;
+            modalFeatures.appendChild(li);
+        });
+    }
+    
+    // 打开弹窗
+    function openModal(productType) {
+        updateModalContent(productType);
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // 关闭弹窗
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // 点击卡片打开弹窗
     productCards.forEach(card => {
         card.addEventListener('click', function(e) {
-            // 防止点击内部链接时触发
             if (e.target.tagName === 'A') return;
-            
-            // 切换展开状态
-            const isExpanded = this.classList.toggle('expanded');
-            
-            // 阻止事件冒泡，避免触发其他事件
+            const productType = this.getAttribute('data-product');
+            openModal(productType);
             e.stopPropagation();
         });
     });
+    
+    // 点击关闭按钮
+    modalClose.addEventListener('click', closeModal);
+    
+    // 点击背景关闭弹窗
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // ESC键关闭弹窗
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    // 语言切换时更新弹窗内容
+    const originalSwitchLanguage = switchLanguage;
+    switchLanguage = function(lang) {
+        originalSwitchLanguage(lang);
+        if (modal.classList.contains('active')) {
+            const activeCard = document.querySelector('.product-card[data-product].expanded');
+            if (activeCard) {
+                const productType = activeCard.getAttribute('data-product');
+                updateModalContent(productType);
+            }
+        }
+    };
 });
 
 // 导航栏滚动效果
