@@ -63,9 +63,9 @@
                     <h3 data-i18n="product_speaker">🔊 高品质喇叭</h3>
                     <p data-i18n="product_speaker_short_desc">高保真音频输出单元</p>
                 </div>
-                <div class="product-card">
-                    <h3 data-i18n="product_camera">📷 摄像头</h3>
-                    <p data-i18n="product_camera_desc">智能视觉采集设备，支持多场景图像识别</p>
+                <div class="product-card" data-product="camera">
+                    <h3 data-i18n="product_camera">📷 AI驱动传感融合摄像头</h3>
+                    <p data-i18n="product_camera_short_desc">具身AI 3D视觉传感模块</p>
                 </div>
                 <div class="product-card">
                     <h3 data-i18n="product_radar">📡 毫米波雷达</h3>
@@ -186,12 +186,16 @@
                 <p id="modalDescription"></p>
                 <div class="modal-details">
                     <div class="detail-section">
-                        <h3 data-i18n="product_mic_specs_title">硬件规格</h3>
+                        <h3 id="modalSpecsTitle" data-i18n="product_mic_specs_title">硬件规格</h3>
                         <ul id="modalSpecs"></ul>
                     </div>
                     <div class="detail-section">
-                        <h3 data-i18n="product_mic_features_title">软件功能</h3>
+                        <h3 id="modalFeaturesTitle" data-i18n="product_mic_features_title">软件功能</h3>
                         <ul id="modalFeatures"></ul>
+                    </div>
+                    <div class="detail-section" id="scenariosSection" style="display: none;">
+                        <h3 id="scenariosTitle">应用场景</h3>
+                        <ul id="modalScenarios"></ul>
                     </div>
                 </div>
             </div>

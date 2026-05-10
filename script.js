@@ -19,8 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.querySelector('.modal-close');
     const modalTitle = document.getElementById('modalTitle');
     const modalDescription = document.getElementById('modalDescription');
+    const modalSpecsTitle = document.getElementById('modalSpecsTitle');
+    const modalFeaturesTitle = document.getElementById('modalFeaturesTitle');
     const modalSpecs = document.getElementById('modalSpecs');
     const modalFeatures = document.getElementById('modalFeatures');
+    const modalScenarios = document.getElementById('modalScenarios');
+    const scenariosTitle = document.getElementById('scenariosTitle');
     
     // 产品信息数据
     const productData = {
@@ -31,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
             shortDescriptionKey: 'product_mic_short_desc',
             description: '对具身和人形机器人专门开发的全链路语音交互模组，包括拾音降噪、回声消除、本地唤醒、360度声源定位、本地语音指令识别、语音合成、在线语音识别、语义理解、大模型交互等功能',
             descriptionKey: 'product_mic_desc',
+            specsTitleKey: 'product_mic_specs_title',
+            featuresTitleKey: 'product_mic_features_title',
             specs: [
                 { key: 'product_mic_spec_1' },
                 { key: 'product_mic_spec_2' },
@@ -56,6 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
             shortDescriptionKey: 'product_speaker_short_desc',
             description: '专为机器人和智能设备设计的高品质喇叭，额定功率≥5W，阻抗8Ω，频响范围165Hz-20kHz，支持宽温工作（-25℃至+60℃），通过严格的环境可靠性测试',
             descriptionKey: 'product_speaker_desc',
+            specsTitleKey: 'product_speaker_specs_title',
+            featuresTitleKey: 'product_speaker_features_title',
             specs: [
                 { key: 'product_speaker_spec_1' },
                 { key: 'product_speaker_spec_2' },
@@ -71,6 +79,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 { key: 'product_speaker_feature_4' },
                 { key: 'product_speaker_feature_5' },
                 { key: 'product_speaker_feature_6' }
+            ]
+        },
+        camera: {
+            title: '摄像头',
+            titleKey: 'product_camera',
+            shortDescription: '具身AI 3D视觉传感模块',
+            shortDescriptionKey: 'product_camera_short_desc',
+            description: '专为具身机器人设计的摄像头，集成RGB彩色成像、深度感知和3D数据采集功能。支持1280×960@60fps深度分辨率和1920×1200@60fps RGB分辨率，深度精度<15m（0.1%精度），IP69K防水等级，工作温度-20℃~60℃，单电缆设计，支持Nvidia Nano Super/Jetson Orin/NXP i.Mx95等平台',
+            descriptionKey: 'product_camera_desc',
+            specsTitleKey: 'product_camera_specs_title',
+            featuresTitleKey: 'product_camera_features_title',
+            specs: [
+                { key: 'product_camera_spec_1' },
+                { key: 'product_camera_spec_2' },
+                { key: 'product_camera_spec_3' },
+                { key: 'product_camera_spec_4' },
+                { key: 'product_camera_spec_5' },
+                { key: 'product_camera_spec_6' }
+            ],
+            features: [
+                { key: 'product_camera_feature_1' },
+                { key: 'product_camera_feature_2' },
+                { key: 'product_camera_feature_3' },
+                { key: 'product_camera_feature_4' },
+                { key: 'product_camera_feature_5' },
+                { key: 'product_camera_feature_6' }
             ]
         }
     };
@@ -93,6 +127,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // 更新描述
         modalDescription.textContent = translations[lang][data.descriptionKey] || data.description;
         
+        // 更新规格标题
+        const specsTitleKey = data.specsTitleKey || 'product_mic_specs_title';
+        modalSpecsTitle.textContent = translations[lang][specsTitleKey];
+        modalSpecsTitle.setAttribute('data-i18n', specsTitleKey);
+        
+        // 更新特性标题
+        const featuresTitleKey = data.featuresTitleKey || 'product_mic_features_title';
+        modalFeaturesTitle.textContent = translations[lang][featuresTitleKey];
+        modalFeaturesTitle.setAttribute('data-i18n', featuresTitleKey);
+        
         // 更新技术规格
         modalSpecs.innerHTML = '';
         data.specs.forEach(spec => {
@@ -110,13 +154,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // 更新应用场景
-        if (data.scenarios && modalScenarios) {
+        if (data.scenarios && scenariosTitle) {
+            scenariosSection.style.display = 'block';
+            const scenariosTitleKey = data.scenariosTitleKey || 'product_mic_scenarios_title';
+            scenariosTitle.textContent = translations[lang][scenariosTitleKey];
+            scenariosTitle.setAttribute('data-i18n', scenariosTitleKey);
             modalScenarios.innerHTML = '';
             data.scenarios.forEach(scenario => {
                 const li = document.createElement('li');
                 li.textContent = translations[lang][scenario.key] || scenario.key;
                 modalScenarios.appendChild(li);
             });
+        } else if (scenariosSection) {
+            scenariosSection.style.display = 'none';
         }
     }
     
@@ -230,7 +280,26 @@ const translations = {
         product_speaker_feature_5: '✓ 环境适应性强：耐高温、耐寒、耐湿试验全部通过',
         product_speaker_feature_6: '✓ 耐用性佳：通过跌落测试，结构稳固',
         product_camera: '📷 摄像头',
-        product_camera_desc: '智能视觉采集设备，支持多场景图像识别',
+        product_camera_short_desc: '具身AI 3D视觉传感模块',
+        product_camera_desc: '专为具身机器人设计的摄像头，集成RGB彩色成像、深度感知和3D数据采集功能。支持1280×960@60fps深度分辨率和1920×1200@60fps RGB分辨率，深度精度<15m（0.1%精度），IP69K防水等级，工作温度-20℃~60℃，单电缆设计，支持Nvidia Nano Super/Jetson Orin/NXP i.Mx95等平台',
+        product_camera_specs_title: '硬件规格',
+        product_camera_spec_1: '• TOF分辨率：1280×960 @60fps',
+        product_camera_spec_2: '• RGB分辨率：1920×1200 @60fps',
+        product_camera_spec_3: '• 深度感知范围：<15m（0.1%精度）',
+        product_camera_spec_4: '• 视场角：TOF HFOV 85.6°±3° / RGB HFOV 67.2°±3°',
+        product_camera_spec_5: '• 防护等级：IP69K防水防尘',
+        product_camera_spec_6: '• 工作温度：-20℃~60℃',
+        product_camera_features_title: '性能规范',
+        product_camera_feature_1: '✓ 单电缆设计：极低延迟设计，仅1根电缆传输数据和供电',
+        product_camera_feature_2: '✓ 高精度深度感知：单光子雪崩技术，0.1%精度',
+        product_camera_feature_3: '✓ 内置传感器：6DOF IMU，气压计/磁力计（可选）',
+        product_camera_feature_4: '✓ 颜色校准：3D校准基础上增加颜色校准',
+        product_camera_feature_5: '✓ 宽平台支持：支持Nvidia Nano Super/Jetson Orin/NXP i.Mx95',
+        product_camera_feature_6: '✓ 汽车级可靠性：通过严格环境测试，结构稳固',
+        product_camera_scenario_1: '🚗 自动驾驶和ADAS系统',
+        product_camera_scenario_2: '🤖 机器视觉和机器人',
+        product_camera_scenario_3: '🚁 无人机',
+        product_camera_scenario_4: '🏭 AGV自动导引车',
         product_radar: '📡 毫米波雷达',
         product_radar_desc: '高精度雷达传感器，精准探测与感知',
         product_antenna: '📶 天线',
@@ -299,7 +368,26 @@ const translations = {
         product_speaker_feature_5: '✓ Strong Environmental Adaptability: Passed high temperature, low temperature, and humidity tests',
         product_speaker_feature_6: '✓ Excellent Durability: Passed drop test with robust structure',
         product_camera: '📷 Camera',
-        product_camera_desc: 'Intelligent visual capture device supporting multi-scenario image recognition',
+        product_camera_short_desc: 'Embodied AI 3D Vision Sensor Module',
+        product_camera_desc: 'Camera designed for embodied robots, integrating RGB color imaging, depth perception, and 3D data collection. Supports 1280×960@60fps depth resolution and 1920×1200@60fps RGB resolution, depth accuracy <15m (0.1% precision), IP69K waterproof rating, operating temperature -20℃~60℃, single cable design, compatible with Nvidia Nano Super/Jetson Orin/NXP i.Mx95 platforms',
+        product_camera_specs_title: 'Hardware Specifications',
+        product_camera_spec_1: '• TOF Resolution: 1280×960 @60fps',
+        product_camera_spec_2: '• RGB Resolution: 1920×1200 @60fps',
+        product_camera_spec_3: '• Depth Perception Range: <15m (0.1% accuracy)',
+        product_camera_spec_4: '• Field of View: TOF HFOV 85.6°±3° / RGB HFOV 67.2°±3°',
+        product_camera_spec_5: '• Protection Rating: IP69K waterproof and dustproof',
+        product_camera_spec_6: '• Operating Temperature: -20℃~60℃',
+        product_camera_features_title: 'Performance Specifications',
+        product_camera_feature_1: '✓ Single Cable Design: Ultra-low latency design, only 1 cable for data and power transmission',
+        product_camera_feature_2: '✓ High-Precision Depth Perception: Single photon avalanche technology, 0.1% accuracy',
+        product_camera_feature_3: '✓ Built-in Sensors: 6DOF IMU, barometer/magnetometer (optional)',
+        product_camera_feature_4: '✓ Color Calibration: Color calibration on top of 3D calibration',
+        product_camera_feature_5: '✓ Wide Platform Support: Compatible with Nvidia Nano Super/Jetson Orin/NXP i.Mx95',
+        product_camera_feature_6: '✓ Automotive-Grade Reliability: Passed strict environmental tests with robust structure',
+        product_camera_scenario_1: '🚗 Autonomous Driving and ADAS Systems',
+        product_camera_scenario_2: '🤖 Machine Vision and Robotics',
+        product_camera_scenario_3: '🚁 Drones',
+        product_camera_scenario_4: '🏭 AGV Automated Guided Vehicles',
         product_radar: '📡 Millimeter Wave Radar',
         product_radar_desc: 'High-precision radar sensor for accurate detection and perception',
         product_antenna: '📶 Antenna',
@@ -368,7 +456,26 @@ const translations = {
         product_speaker_feature_5: '✓ 環境適応性が強い：耐高温、耐寒、耐湿試験すべてクリア',
         product_speaker_feature_6: '✓ 耐久性が優れる：落下試験をクリア、構造が頑丈',
         product_camera: '📷 カメラ',
-        product_camera_desc: 'インテリジェントビジュアルキャプチャデバイス、マルチシナリオ画像認識をサポート',
+        product_camera_short_desc: '具身AI 3Dビジョンセンサーモジュール',
+        product_camera_desc: '具身ロボット向けに設計されたカメラ、RGBカラーイメージング、深度認識、3Dデータ収集機能を統合。1280×960@60fps深度解像度と1920×1200@60fps RGB解像度をサポート、深度精度<15m（0.1%精度）、IP69K防水等級、動作温度-20℃~60℃、単一ケーブル設計、Nvidia Nano Super/Jetson Orin/NXP i.Mx95プラットフォームに対応',
+        product_camera_specs_title: 'ハードウェア仕様',
+        product_camera_spec_1: '• TOF解像度：1280×960 @60fps',
+        product_camera_spec_2: '• RGB解像度：1920×1200 @60fps',
+        product_camera_spec_3: '• 深度認識範囲：<15m（0.1%精度）',
+        product_camera_spec_4: '• 視野角：TOF HFOV 85.6°±3° / RGB HFOV 67.2°±3°',
+        product_camera_spec_5: '• 防護等級：IP69K防水防塵',
+        product_camera_spec_6: '• 動作温度：-20℃~60℃',
+        product_camera_features_title: '性能仕様',
+        product_camera_feature_1: '✓ 単一ケーブル設計：超低遅延設計、データと電力伝送に1本のケーブルのみ',
+        product_camera_feature_2: '✓ 高精度深度認識：単一光子アバランシェ技術、0.1%精度',
+        product_camera_feature_3: '✓ 内蔵センサー：6DOF IMU、気圧計/磁力計（オプション）',
+        product_camera_feature_4: '✓ カラーキャリブレーション：3Dキャリブレーションの上にカラーキャリブレーション',
+        product_camera_feature_5: '✓ 幅広いプラットフォームサポート：Nvidia Nano Super/Jetson Orin/NXP i.Mx95に対応',
+        product_camera_feature_6: '✓ 車載グレードの信頼性：厳格な環境試験をクリア、構造が頑丈',
+        product_camera_scenario_1: ' 自動運転とADASシステム',
+        product_camera_scenario_2: '🤖 マシンビジョンとロボティクス',
+        product_camera_scenario_3: '🚁 ドローン',
+        product_camera_scenario_4: '🏭 AGV自動誘導車',
         product_radar: '📡 ミリ波レーダー',
         product_radar_desc: '高精度レーダーセンサー、正確な検出と知覚',
         product_antenna: '📶 アンテナ',
