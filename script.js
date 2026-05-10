@@ -21,26 +21,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modalDescription');
     const modalSpecs = document.getElementById('modalSpecs');
     const modalFeatures = document.getElementById('modalFeatures');
+    const modalScenarios = document.getElementById('modalScenarios');
     
     // 产品信息数据
     const productData = {
         mic: {
-            title: '️ 阵列麦克风',
+            title: '阵列麦克风',
             titleKey: 'product_mic',
-            description: '高精度麦克风阵列，支持多场景拾音与降噪',
+            description: '环形6麦阵列，支持360°全角度拾音与远场交互',
             descriptionKey: 'product_mic_desc',
             specs: [
-                { key: 'product_mic_detail_1' },
-                { key: 'product_mic_detail_2' },
-                { key: 'product_mic_detail_3' },
-                { key: 'product_mic_detail_4' },
-                { key: 'product_mic_detail_5' }
+                { key: 'product_mic_spec_1' },
+                { key: 'product_mic_spec_2' },
+                { key: 'product_mic_spec_3' },
+                { key: 'product_mic_spec_4' },
+                { key: 'product_mic_spec_5' },
+                { key: 'product_mic_spec_6' }
             ],
             features: [
                 { key: 'product_mic_feature_1' },
                 { key: 'product_mic_feature_2' },
                 { key: 'product_mic_feature_3' },
-                { key: 'product_mic_feature_4' }
+                { key: 'product_mic_feature_4' },
+                { key: 'product_mic_feature_5' }
+            ],
+            scenarios: [
+                { key: 'product_mic_scenario_1' },
+                { key: 'product_mic_scenario_2' },
+                { key: 'product_mic_scenario_3' },
+                { key: 'product_mic_scenario_4' }
             ]
         }
     };
@@ -78,6 +87,16 @@ document.addEventListener('DOMContentLoaded', function() {
             li.textContent = translations[lang][feature.key] || feature.key;
             modalFeatures.appendChild(li);
         });
+        
+        // 更新应用场景
+        if (data.scenarios && modalScenarios) {
+            modalScenarios.innerHTML = '';
+            data.scenarios.forEach(scenario => {
+                const li = document.createElement('li');
+                li.textContent = translations[lang][scenario.key] || scenario.key;
+                modalScenarios.appendChild(li);
+            });
+        }
     }
     
     // 打开弹窗
@@ -155,19 +174,25 @@ const translations = {
         hero_description: '20年+精密设备研发经验，专注感知与人机交互系统，<br>在汽车、物联网、具身智能等领域提供一体化的软硬件产品和服务。',
         section_products: '产品矩阵',
         product_mic: '🎙️ 阵列麦克风',
-        product_mic_desc: '高精度麦克风阵列，支持多场景拾音与降噪',
-        product_mic_details_title: '技术规格',
-        product_mic_detail_1: '• 通道数：4-8通道可配置',
-        product_mic_detail_2: '• 频率响应：20Hz - 20kHz',
-        product_mic_detail_3: '• 信噪比：≥65dB',
-        product_mic_detail_4: '• 指向性：全向/定向可选',
-        product_mic_detail_5: '• 工作温度：-40°C ~ +85°C',
+        product_mic_desc: '环形6麦阵列，支持360°全角度拾音与远场交互',
+        product_mic_specs_title: '技术规格',
+        product_mic_spec_1: '• 麦克风配置：6麦环形阵列',
+        product_mic_spec_2: '• 拾音角度：360°全角度拾音',
+        product_mic_spec_3: '• 声源定位：精度±10°以内',
+        product_mic_spec_4: '• 远场交互：5米识别率>92%，3米>94%',
+        product_mic_spec_5: '• 唤醒率：5米唤醒率>95%',
+        product_mic_spec_6: '• 误唤醒率：仅1次/48h',
         product_mic_features_title: '核心优势',
-        product_mic_feature_1: '✓ 智能波束成形技术',
-        product_mic_feature_2: '✓ 实时噪声抑制算法',
-        product_mic_feature_3: '✓ 多场景自适应优化',
-        product_mic_feature_4: '✓ 低功耗设计',
-        expand_hint: '👇 点击查看详情',
+        product_mic_feature_1: '✓ 回声消除（AEC）技术',
+        product_mic_feature_2: '✓ 声源定位（DOA）功能',
+        product_mic_feature_3: '✓ 波束成形（BF）算法',
+        product_mic_feature_4: '✓ 语音增强（SE）处理',
+        product_mic_feature_5: '✓ 支持纠正打断及多轮对话',
+        product_mic_scenarios_title: '应用场景',
+        product_mic_scenario_1: '• 智能机器人语音交互',
+        product_mic_scenario_2: '• 智能音箱全角度拾音',
+        product_mic_scenario_3: '• 家居中控系统',
+        product_mic_scenario_4: '• 远场语音识别场景',
         product_speaker: '🔊 喇叭',
         product_speaker_desc: '高品质音频输出设备，清晰还原声音细节',
         product_camera: '📷 摄像头',
@@ -204,18 +229,25 @@ const translations = {
         hero_description: '20+ years of precision equipment R&D experience, focusing on perception and human-computer interaction systems,<br>providing integrated hardware and software products and services in automotive, IoT, and embodied intelligence fields.',
         section_products: 'Product Matrix',
         product_mic: '🎙️ Microphone Array',
-        product_mic_desc: 'High-precision microphone array supporting multi-scenario pickup and noise reduction',
-        product_mic_details_title: 'Technical Specifications',
-        product_mic_detail_1: '• Channels: 4-8 configurable channels',
-        product_mic_detail_2: '• Frequency Response: 20Hz - 20kHz',
-        product_mic_detail_3: '• Signal-to-Noise Ratio: ≥65dB',
-        product_mic_detail_4: '• Directivity: Omnidirectional/Directional optional',
-        product_mic_detail_5: '• Operating Temperature: -40°C ~ +85°C',
+        product_mic_desc: '6-mic ring array supporting 360° omnidirectional pickup and far-field interaction',
+        product_mic_specs_title: 'Technical Specifications',
+        product_mic_spec_1: '• Microphone Configuration: 6-mic ring array',
+        product_mic_spec_2: '• Pickup Angle: 360° omnidirectional pickup',
+        product_mic_spec_3: '• Sound Source Localization: Accuracy within ±10°',
+        product_mic_spec_4: '• Far-field Interaction: 5m recognition rate >92%, 3m >94%',
+        product_mic_spec_5: '• Wake-up Rate: 5m wake-up rate >95%',
+        product_mic_spec_6: '• False Wake-up Rate: Only 1 time/48h',
         product_mic_features_title: 'Key Features',
-        product_mic_feature_1: '✓ Intelligent beamforming technology',
-        product_mic_feature_2: '✓ Real-time noise suppression algorithm',
-        product_mic_feature_3: '✓ Multi-scenario adaptive optimization',
-        product_mic_feature_4: '✓ Low power consumption design',
+        product_mic_feature_1: '✓ Acoustic Echo Cancellation (AEC)',
+        product_mic_feature_2: '✓ Direction of Arrival (DOA) estimation',
+        product_mic_feature_3: '✓ Beamforming (BF) algorithm',
+        product_mic_feature_4: '✓ Speech Enhancement (SE) processing',
+        product_mic_feature_5: '✓ Support for interruption correction and multi-turn dialogue',
+        product_mic_scenarios_title: 'Application Scenarios',
+        product_mic_scenario_1: '• Smart robot voice interaction',
+        product_mic_scenario_2: '• Smart speaker omnidirectional pickup',
+        product_mic_scenario_3: '• Smart home control systems',
+        product_mic_scenario_4: '• Far-field voice recognition scenarios',
         expand_hint: '👇 Click to view details',
         product_speaker: '🔊 Speaker',
         product_speaker_desc: 'High-quality audio output device, clearly reproducing sound details',
@@ -253,18 +285,25 @@ const translations = {
         hero_description: '20年以上の精密機器開発経験、知覚とヒューマンコンピュータインタラクションシステムに特化し、<br>自動車、IoT、具現化知能などの分野で統合的なハードウェアおよびソフトウェア製品とサービスを提供します。',
         section_products: '製品マトリクス',
         product_mic: '🎙️ マイクアレイ',
-        product_mic_desc: '高精度マイクアレイ、マルチシナリオでの集音とノイズキャンセリングをサポート',
-        product_mic_details_title: '技術仕様',
-        product_mic_detail_1: '• チャンネル数：4-8チャンネル設定可能',
-        product_mic_detail_2: '• 周波数応答：20Hz - 20kHz',
-        product_mic_detail_3: '• 信号対雑音比：≥65dB',
-        product_mic_detail_4: '• 指向性：全方向/指向性選択可能',
-        product_mic_detail_5: '• 動作温度：-40°C ~ +85°C',
+        product_mic_desc: '6マイク環形アレイ、360°全角度集音と遠距離対話をサポート',
+        product_mic_specs_title: '技術仕様',
+        product_mic_spec_1: '• マイク構成：6マイク環形アレイ',
+        product_mic_spec_2: '• 集音角度：360°全角度集音',
+        product_mic_spec_3: '• 音源定位：精度±10°以内',
+        product_mic_spec_4: '• 遠距離対話：5m認識率>92%、3m>94%',
+        product_mic_spec_5: '• 起動率：5m起動率>95%',
+        product_mic_spec_6: '• 誤起動率：48時間に1回のみ',
         product_mic_features_title: '主な特徴',
-        product_mic_feature_1: '✓ インテリジェントビームフォーミング技術',
-        product_mic_feature_2: '✓ リアルタイムノイズ抑制アルゴリズム',
-        product_mic_feature_3: '✓ マルチシナリオ適応最適化',
-        product_mic_feature_4: '✓ 低消費電力設計',
+        product_mic_feature_1: '✓ エコーキャンセレーション（AEC）技術',
+        product_mic_feature_2: '• 音源定位（DOA）機能',
+        product_mic_feature_3: '✓ ビームフォーミング（BF）アルゴリズム',
+        product_mic_feature_4: '✓ 音声強化（SE）処理',
+        product_mic_feature_5: '✓ 訂正割り込みおよび多回対話をサポート',
+        product_mic_scenarios_title: '応用シーン',
+        product_mic_scenario_1: '• スマートロボット音声対話',
+        product_mic_scenario_2: '• スマートスピーカー全角度集音',
+        product_mic_scenario_3: '• スマートホームコントロールシステム',
+        product_mic_scenario_4: '• 遠距離音声認識シーン',
         expand_hint: '👇 クリックして詳細を表示',
         product_speaker: '🔊 スピーカー',
         product_speaker_desc: '高品質オーディオ出力デバイス、音声の詳細を鮮明に再現',
