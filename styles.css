@@ -721,6 +721,24 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.service-card h3 .title-emoji {
+    font-size: 1.8rem;
+    line-height: 1;
+    filter: none;
+    -webkit-text-fill-color: initial;
+}
+
+.service-card h3 .title-text {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .service-card p {

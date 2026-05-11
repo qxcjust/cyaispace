@@ -88,19 +88,19 @@
         <div class="container">
             <h2 data-i18n="section_services">服务矩阵</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" data-service="voice">
                     <h3 data-i18n="service_voice">🎙️ 语音前端处理和优化</h3>
                     <p data-i18n="service_voice_desc">传统信号处理与DNN算法结合，支持64Hz精度调节、65dB回声消除、25dB噪声抑制，覆盖100+声学场景</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-service="multilang">
                     <h3 data-i18n="service_multilang">💬 多语言会话定制服务</h3>
                     <p data-i18n="service_multilang_desc">支持多国语言定制开发，方言识别，个性化语音交互方案设计</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-service="llm">
                     <h3 data-i18n="service_llm">🧠 大模型定制开发服务</h3>
                     <p data-i18n="service_llm_desc">基于先进大模型技术，提供多意图理解、跨域上下文、高可靠性、低延迟的AI解决方案</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-service="data">
                     <h3 data-i18n="service_data">📊 数据采集清洗标定训练</h3>
                     <p data-i18n="service_data_desc">全流程数据服务：采集、清洗、标定、模型训练，确保高质量数据支撑AI系统</p>
                 </div>
@@ -186,16 +186,39 @@
                 <p id="modalDescription"></p>
                 <div class="modal-details">
                     <div class="detail-section">
-                        <h3 id="modalSpecsTitle" data-i18n="product_mic_specs_title">硬件规格</h3>
+                        <h3 id="modalSpecsTitle">硬件规格</h3>
                         <ul id="modalSpecs"></ul>
                     </div>
                     <div class="detail-section">
-                        <h3 id="modalFeaturesTitle" data-i18n="product_mic_features_title">软件功能</h3>
+                        <h3 id="modalFeaturesTitle">软件功能</h3>
                         <ul id="modalFeatures"></ul>
                     </div>
                     <div class="detail-section" id="scenariosSection" style="display: none;">
                         <h3 id="scenariosTitle">应用场景</h3>
                         <ul id="modalScenarios"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 服务详情弹窗 -->
+    <div class="modal-overlay" id="serviceModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeServiceModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="serviceModalTitle"></h2>
+            </div>
+            <div class="modal-body">
+                <p id="serviceModalDescription"></p>
+                <div class="modal-details">
+                    <div class="detail-section">
+                        <h3 id="serviceHumansTitle"></h3>
+                        <ul id="serviceHumansFeatures"></ul>
+                    </div>
+                    <div class="detail-section">
+                        <h3 id="serviceHciTitle"></h3>
+                        <ul id="serviceHciFeatures"></ul>
                     </div>
                 </div>
             </div>

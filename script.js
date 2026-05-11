@@ -184,6 +184,169 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
+    // 服务数据
+    const serviceData = {
+        voice: {
+            title: '语音前端处理和优化',
+            titleKey: 'service_voice',
+            description: '传统信号处理与DNN算法结合，兼顾保真性与噪声抑制，通话场景低失真，人机交互高准确率',
+            descriptionKey: 'service_voice_desc',
+            humansTitle: '人人交互',
+            humansTitleKey: 'service_voice_humans_title',
+            humansFeatures: [
+                { key: 'service_voice_humans_feature_1' },
+                { key: 'service_voice_humans_feature_2' },
+                { key: 'service_voice_humans_feature_3' },
+                { key: 'service_voice_humans_feature_4' }
+            ],
+            hciTitle: '人机交互',
+            hciTitleKey: 'service_voice_hci_title',
+            hciFeatures: [
+                { key: 'service_voice_hci_feature_1' },
+                { key: 'service_voice_hci_feature_2' },
+                { key: 'service_voice_hci_feature_3' },
+                { key: 'service_voice_hci_feature_4' }
+            ]
+        },
+        multilang: {
+            title: '多语言会话定制服务',
+            titleKey: 'service_multilang',
+            description: '支持多国语言定制开发，方言识别，个性化语音交互方案设计',
+            descriptionKey: 'service_multilang_desc',
+            featuresTitle: '核心功能',
+            featuresTitleKey: 'service_multilang_features_title',
+            features: [
+                { key: 'service_multilang_feature_1' },
+                { key: 'service_multilang_feature_2' },
+                { key: 'service_multilang_feature_3' },
+                { key: 'service_multilang_feature_4' }
+            ],
+            ttsTitle: 'TTS语音播报',
+            ttsTitleKey: 'service_multilang_tts_title',
+            ttsFeatures: [
+                { key: 'service_multilang_tts_feature_1' },
+                { key: 'service_multilang_tts_feature_2' },
+                { key: 'service_multilang_tts_feature_3' }
+            ]
+        },
+        llm: {
+            title: '大模型定制开发服务',
+            titleKey: 'service_llm',
+            description: '基于先进大模型技术，提供多意图理解、跨域上下文、高可靠性、低延迟的AI解决方案',
+            descriptionKey: 'service_llm_desc'
+        },
+        data: {
+            title: '数据采集清洗标定训练',
+            titleKey: 'service_data',
+            description: '全流程数据服务：采集、清洗、标定、模型训练，确保高质量数据支撑AI系统',
+            descriptionKey: 'service_data_desc'
+        }
+    };
+    
+    // 服务弹窗相关元素
+    const serviceModal = document.getElementById('serviceModal');
+    const serviceModalTitle = document.getElementById('serviceModalTitle');
+    const serviceModalDescription = document.getElementById('serviceModalDescription');
+    const serviceHumansTitle = document.getElementById('serviceHumansTitle');
+    const serviceHumansFeatures = document.getElementById('serviceHumansFeatures');
+    const serviceHciTitle = document.getElementById('serviceHciTitle');
+    const serviceHciFeatures = document.getElementById('serviceHciFeatures');
+    
+    // 更新服务弹窗内容
+    function updateServiceModalContent(serviceType) {
+        const lang = getCurrentLang();
+        const data = serviceData[serviceType];
+        
+        if (!data) return;
+        
+        // 更新标题
+        const fullTitle = translations[lang][data.titleKey] || data.title;
+        const emojiRegex = /^([^a-zA-Z0-9\u4e00-\u9fff\s]+)\s*/;
+        const match = emojiRegex.exec(fullTitle);
+        if (match && match[1]) {
+            const emoji = match[1].trim();
+            const text = fullTitle.substring(match[0].length).trim();
+            serviceModalTitle.innerHTML = `<span class="title-emoji">${emoji}</span><span class="title-text">${text}</span>`;
+        } else {
+            serviceModalTitle.textContent = fullTitle;
+        }
+        
+        // 更新描述
+        serviceModalDescription.textContent = translations[lang][data.descriptionKey] || data.description;
+        
+        // 如果有"人人交互"板块
+        if (data.humansTitleKey && serviceHumansTitle) {
+            serviceHumansTitle.textContent = translations[lang][data.humansTitleKey] || data.humansTitle;
+            serviceHumansFeatures.innerHTML = '';
+            if (data.humansFeatures) {
+                data.humansFeatures.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = translations[lang][feature.key] || feature.key;
+                    serviceHumansFeatures.appendChild(li);
+                });
+            }
+        }
+        
+        // 如果有"人机交互"板块
+        if (data.hciTitleKey && serviceHciTitle) {
+            serviceHciTitle.textContent = translations[lang][data.hciTitleKey] || data.hciTitle;
+            serviceHciFeatures.innerHTML = '';
+            if (data.hciFeatures) {
+                data.hciFeatures.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = translations[lang][feature.key] || feature.key;
+                    serviceHciFeatures.appendChild(li);
+                });
+            }
+        }
+    }
+    
+    // 打开服务弹窗
+    function openServiceModal(serviceType) {
+        updateServiceModalContent(serviceType);
+        serviceModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // 关闭服务弹窗
+    function closeServiceModal() {
+        serviceModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // 点击服务卡片打开弹窗
+    const serviceCards = document.querySelectorAll('.service-card[data-service]');
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') return;
+            const serviceType = this.getAttribute('data-service');
+            openServiceModal(serviceType);
+            e.stopPropagation();
+        });
+    });
+    
+    // 点击服务弹窗关闭按钮
+    const serviceModalClose = document.querySelector('#serviceModal .modal-close');
+    if (serviceModalClose) {
+        serviceModalClose.addEventListener('click', closeServiceModal);
+    }
+    
+    // 点击服务弹窗背景关闭
+    if (serviceModal) {
+        serviceModal.addEventListener('click', function(e) {
+            if (e.target === serviceModal) {
+                closeServiceModal();
+            }
+        });
+    }
+    
+    // ESC键关闭服务弹窗
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && serviceModal && serviceModal.classList.contains('active')) {
+            closeServiceModal();
+        }
+    });
+    
     // 获取当前语言
     function getCurrentLang() {
         return localStorage.getItem('preferred-language') || 'zh';
@@ -440,7 +603,17 @@ const translations = {
         product_aibrain_feature_6: '✓ 开放生态：支持第三方技能插件扩展',
         section_services: '服务矩阵',
         service_voice: '🎙️ 语音前端处理和优化',
-        service_voice_desc: '传统信号处理与DNN算法结合，支持64Hz精度调节、65dB回声消除、25dB噪声抑制，覆盖100+声学场景',
+        service_voice_desc: '传统信号处理与DNN算法结合，兼顾保真性与噪声抑制，通话场景低失真，人机交互高准确率',
+        service_voice_humans_title: '人人交互',
+        service_voice_humans_feature_1: '智能降噪：抑制稳态和非稳态噪声25db，覆盖100+声学场景',
+        service_voice_humans_feature_2: '回声消除：抑制深度65db，可处理回声拖尾1.2s',
+        service_voice_humans_feature_3: '自动增益：可有效处理动态范围达45db',
+        service_voice_humans_feature_4: 'EQ音效：调整精度为64hz',
+        service_voice_hci_title: '人机交互',
+        service_voice_hci_feature_1: '干扰抑制：提升信噪比10-25db',
+        service_voice_hci_feature_2: '回声消除：抑制深度40db',
+        service_voice_hci_feature_3: '自噪声抑制：>10db',
+        service_voice_hci_feature_4: '动态DOA：支持设备在移动中动态侦测计算',
         service_multilang: '💬 多语言会话定制服务',
         service_multilang_desc: '支持多国语言定制开发，方言识别，个性化语音交互方案设计',
         service_llm: '🧠 大模型定制开发服务',
@@ -575,7 +748,17 @@ const translations = {
         product_aibrain_feature_6: '✓ Open Ecosystem: Support for Third-party Skill Plugin Extensions',
         section_services: 'Service Matrix',
         service_voice: '🎙️ Voice Front-end Processing & Optimization',
-        service_voice_desc: 'Combining traditional signal processing with DNN algorithms, supporting 64Hz precision adjustment, 65dB echo cancellation, 25dB noise suppression, covering 100+ acoustic scenarios',
+        service_voice_desc: 'Combines traditional signal processing with DNN algorithms, balancing fidelity and noise suppression. Low distortion for calls, high accuracy for HMI',
+        service_voice_humans_title: 'Human-Human Interaction',
+        service_voice_humans_feature_1: 'Smart Noise Reduction: Suppresses steady and non-stationary noise by 25db, covers 100+ acoustic scenarios',
+        service_voice_humans_feature_2: 'Echo Cancellation: Suppression depth 65db, can handle echo tail of 1.2s',
+        service_voice_humans_feature_3: 'Auto Gain Control: Effectively handles dynamic range up to 45db',
+        service_voice_humans_feature_4: 'EQ Sound Effects: Adjustment precision of 64hz',
+        service_voice_hci_title: 'Human-Machine Interaction',
+        service_voice_hci_feature_1: 'Interference Suppression: Improves SNR by 10-25db',
+        service_voice_hci_feature_2: 'Echo Cancellation: Suppression depth 40db',
+        service_voice_hci_feature_3: 'Self-Noise Suppression: >10db',
+        service_voice_hci_feature_4: 'Dynamic DOA: Supports dynamic detection and calculation while device is moving',
         service_multilang: '💬 Multi-language Conversation Customization',
         service_multilang_desc: 'Supporting multi-language custom development, dialect recognition, personalized voice interaction solution design',
         service_llm: '🧠 Large Model Custom Development',
@@ -714,7 +897,17 @@ const translations = {
         product_aibrain_feature_6: '✓ オープンエコシステム：サードパーティスキルプラグイン拡張をサポート',
         section_services: 'サービスマトリクス',
         service_voice: '🎙️ 音声フロントエンド処理と最適化',
-        service_voice_desc: '従来の信号処理とDNNアルゴリズムを組み合わせ、64Hz精度調整、65dBエコーキャンセレーション、25dBノイズ抑制をサポート、100以上の音響シナリオをカバー',
+        service_voice_desc: '従来信号処理とDNNアルゴリズムを組み合わせ、忠実性とノイズ抑制のバランスを取ります。通話では低歪み、HMIでは高精度',
+        service_voice_humans_title: '人人交互',
+        service_voice_humans_feature_1: 'スマートノイズリダクション：定常および非定常ノイズを25db抑制、100+音響シナリオをカバー',
+        service_voice_humans_feature_2: 'エコーキャンセレーション：抑制深度65db、1.2sのエコーテールを処理可能',
+        service_voice_humans_feature_3: 'オートゲインコントロール：最大45dbのダイナミックレンジを効果的に処理',
+        service_voice_humans_feature_4: 'EQ音響効果：調整精度64hz',
+        service_voice_hci_title: '人机交互',
+        service_voice_hci_feature_1: '干渉抑制：SNRを10-25db向上',
+        service_voice_hci_feature_2: 'エコーキャンセレーション：抑制深度40db',
+        service_voice_hci_feature_3: '自ノイズ抑制：>10db',
+        service_voice_hci_feature_4: 'ダイナミックDOA：デバイス移動中の動的検出と計算をサポート',
         service_multilang: '💬 多言語会話カスタマイズサービス',
         service_multilang_desc: '多国語のカスタム開発、方言認識、パーソナライズされた音声対話ソリューション設計をサポート',
         service_llm: '🧠 大規模モデルカスタム開発サービス',
@@ -769,11 +962,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const preferredLang = localStorage.getItem('preferred-language') || 'zh';
     switchLanguage(preferredLang);
     
+    // 为服务卡片标题分离emoji和文字
+    document.querySelectorAll('.service-card h3[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[preferredLang] && translations[preferredLang][key]) {
+            const fullTitle = translations[preferredLang][key];
+            const emojiRegex = /^([^a-zA-Z0-9\u4e00-\u9fff\s]+)\s*/;
+            const match = emojiRegex.exec(fullTitle);
+            if (match && match[1]) {
+                const emoji = match[1].trim();
+                const text = fullTitle.substring(match[0].length).trim();
+                element.innerHTML = `<span class="title-emoji">${emoji}</span><span class="title-text">${text}</span>`;
+            }
+        }
+    });
+    
     // 绑定语言选项点击事件
     document.querySelectorAll('.language-option').forEach(option => {
         option.addEventListener('click', function() {
             const lang = this.getAttribute('data-lang');
             switchLanguage(lang);
+            
+            // 语言切换时更新服务卡片标题
+            document.querySelectorAll('.service-card h3[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    const fullTitle = translations[lang][key];
+                    const emojiRegex = /^([^a-zA-Z0-9\u4e00-\u9fff\s]+)\s*/;
+                    const match = emojiRegex.exec(fullTitle);
+                    if (match && match[1]) {
+                        const emoji = match[1].trim();
+                        const text = fullTitle.substring(match[0].length).trim();
+                        element.innerHTML = `<span class="title-emoji">${emoji}</span><span class="title-text">${text}</span>`;
+                    } else {
+                        element.textContent = fullTitle;
+                    }
+                }
+            });
         });
     });
 });
