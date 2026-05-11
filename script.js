@@ -235,7 +235,32 @@ document.addEventListener('DOMContentLoaded', function() {
             title: '大模型定制开发服务',
             titleKey: 'service_llm',
             description: '基于先进大模型技术，提供多意图理解、跨域上下文、高可靠性、低延迟的AI解决方案',
-            descriptionKey: 'service_llm_desc'
+            descriptionKey: 'service_llm_desc',
+            perceptionNlpTitle: '多模态感知与自然语言处理',
+            perceptionNlpTitleKey: 'service_llm_perception_nlp_title',
+            perceptionNlpFeatures: [
+                { key: 'service_llm_multimodal_feature_1' },
+                { key: 'service_llm_multimodal_feature_2' },
+                { key: 'service_llm_multimodal_feature_3' },
+                { key: 'service_llm_multimodal_feature_4' },
+                { key: 'service_llm_multimodal_feature_5' },
+                { key: 'service_llm_nlp_feature_1' },
+                { key: 'service_llm_nlp_feature_2' },
+                { key: 'service_llm_nlp_feature_3' },
+                { key: 'service_llm_nlp_feature_4' },
+                { key: 'service_llm_nlp_feature_5' },
+                { key: 'service_llm_nlp_feature_6' },
+                { key: 'service_llm_nlp_feature_7' }
+            ],
+            knowledgeTitle: '知识计算及问答',
+            knowledgeTitleKey: 'service_llm_knowledge_title',
+            knowledgeFeatures: [
+                { key: 'service_llm_knowledge_feature_1' },
+                { key: 'service_llm_knowledge_feature_2' },
+                { key: 'service_llm_knowledge_feature_3' },
+                { key: 'service_llm_knowledge_feature_4' },
+                { key: 'service_llm_knowledge_feature_5' }
+            ]
         },
         data: {
             title: '数据采集清洗标定训练',
@@ -261,6 +286,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const serviceTtsSection = document.getElementById('serviceTtsSection');
     const serviceTtsTitle = document.getElementById('serviceTtsTitle');
     const serviceTtsFeatures = document.getElementById('serviceTtsFeatures');
+    const servicePerceptionNlpSection = document.getElementById('servicePerceptionNlpSection');
+    const servicePerceptionNlpTitle = document.getElementById('servicePerceptionNlpTitle');
+    const servicePerceptionNlpFeatures = document.getElementById('servicePerceptionNlpFeatures');
+    const serviceKnowledgeSection = document.getElementById('serviceKnowledgeSection');
+    const serviceKnowledgeTitle = document.getElementById('serviceKnowledgeTitle');
+    const serviceKnowledgeFeatures = document.getElementById('serviceKnowledgeFeatures');
     
     // 更新服务弹窗内容
     function updateServiceModalContent(serviceType) {
@@ -289,6 +320,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (serviceHciSection) serviceHciSection.style.display = 'none';
         if (serviceFeaturesSection) serviceFeaturesSection.style.display = 'none';
         if (serviceTtsSection) serviceTtsSection.style.display = 'none';
+        if (servicePerceptionNlpSection) servicePerceptionNlpSection.style.display = 'none';
+        if (serviceKnowledgeSection) serviceKnowledgeSection.style.display = 'none';
         
         // 如果有"人人交互"板块
         if (data.humansTitleKey && serviceHumansTitle) {
@@ -344,6 +377,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             serviceTtsSection.style.display = 'block';
+        }
+        
+        // 如果有"多模态感知与自然语言处理"板块
+        if (data.perceptionNlpTitleKey && servicePerceptionNlpTitle) {
+            servicePerceptionNlpTitle.textContent = translations[lang][data.perceptionNlpTitleKey] || data.perceptionNlpTitle;
+            servicePerceptionNlpFeatures.innerHTML = '';
+            if (data.perceptionNlpFeatures) {
+                data.perceptionNlpFeatures.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = translations[lang][feature.key] || feature.key;
+                    servicePerceptionNlpFeatures.appendChild(li);
+                });
+            }
+            servicePerceptionNlpSection.style.display = 'block';
+        }
+        
+        // 如果有"知识计算及问答"板块
+        if (data.knowledgeTitleKey && serviceKnowledgeTitle) {
+            serviceKnowledgeTitle.textContent = translations[lang][data.knowledgeTitleKey] || data.knowledgeTitle;
+            serviceKnowledgeFeatures.innerHTML = '';
+            if (data.knowledgeFeatures) {
+                data.knowledgeFeatures.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = translations[lang][feature.key] || feature.key;
+                    serviceKnowledgeFeatures.appendChild(li);
+                });
+            }
+            serviceKnowledgeSection.style.display = 'block';
         }
     }
     
@@ -674,6 +735,25 @@ const translations = {
         service_multilang_tts_feature_3: '支持带情感的TTS播报：高兴、悲伤、中性',
         service_llm: '🧠 大模型定制开发服务',
         service_llm_desc: '基于先进大模型技术，提供多意图理解、跨域上下文、高可靠性、低延迟的AI解决方案',
+        service_llm_perception_nlp_title: '多模态感知与自然语言处理',
+        service_llm_multimodal_feature_1: '语音模态',
+        service_llm_multimodal_feature_2: '语言模态',
+        service_llm_multimodal_feature_3: '视觉模态',
+        service_llm_multimodal_feature_4: '触觉模态',
+        service_llm_multimodal_feature_5: '抬头显示',
+        service_llm_nlp_feature_1: '意图理解',
+        service_llm_nlp_feature_2: '机器翻译',
+        service_llm_nlp_feature_3: '信息抽取',
+        service_llm_nlp_feature_4: '预训练',
+        service_llm_nlp_feature_5: '信息检索',
+        service_llm_nlp_feature_6: '用户建模',
+        service_llm_nlp_feature_7: '文本情感识别',
+        service_llm_knowledge_title: '知识计算及问答',
+        service_llm_knowledge_feature_1: '知识本体构建',
+        service_llm_knowledge_feature_2: '知识抽取',
+        service_llm_knowledge_feature_3: '知识融合',
+        service_llm_knowledge_feature_4: '知识推理',
+        service_llm_knowledge_feature_5: '知识计算',
         service_data: '📊 数据采集清洗标定训练',
         service_data_desc: '全流程数据服务：采集、清洗、标定、模型训练，确保高质量数据支撑AI系统',
         section_partners: '合作伙伴',
@@ -828,6 +908,25 @@ const translations = {
         service_multilang_tts_feature_3: 'Support for emotional TTS broadcasting: happy, sad, neutral',
         service_llm: '🧠 Large Model Custom Development',
         service_llm_desc: 'Based on advanced large model technology, providing multi-intent understanding, cross-domain context, high reliability, low-latency AI solutions',
+        service_llm_perception_nlp_title: 'Multimodal Perception & NLP',
+        service_llm_multimodal_feature_1: 'Speech Modality',
+        service_llm_multimodal_feature_2: 'Language Modality',
+        service_llm_multimodal_feature_3: 'Visual Modality',
+        service_llm_multimodal_feature_4: 'Tactile Modality',
+        service_llm_multimodal_feature_5: 'Head-up Display',
+        service_llm_nlp_feature_1: 'Intent Understanding',
+        service_llm_nlp_feature_2: 'Machine Translation',
+        service_llm_nlp_feature_3: 'Information Extraction',
+        service_llm_nlp_feature_4: 'Pre-training',
+        service_llm_nlp_feature_5: 'Information Retrieval',
+        service_llm_nlp_feature_6: 'User Modeling',
+        service_llm_nlp_feature_7: 'Text Sentiment Recognition',
+        service_llm_knowledge_title: 'Knowledge Computing & QA',
+        service_llm_knowledge_feature_1: 'Knowledge Ontology Construction',
+        service_llm_knowledge_feature_2: 'Knowledge Extraction',
+        service_llm_knowledge_feature_3: 'Knowledge Fusion',
+        service_llm_knowledge_feature_4: 'Knowledge Reasoning',
+        service_llm_knowledge_feature_5: 'Knowledge Computing',
         service_data: '📊 Data Collection, Cleaning & Training',
         service_data_desc: 'Full-process data services: collection, cleaning, calibration, model training, ensuring high-quality data to support AI systems',
         section_partners: 'Partners',
@@ -986,6 +1085,25 @@ const translations = {
         service_multilang_tts_feature_3: '感情付きTTS放送をサポート：嬉しい、悲しい、ニュートラル',
         service_llm: '🧠 大規模モデルカスタム開発サービス',
         service_llm_desc: '先進の大規模モデル技術に基づき、マルチ意図理解、クロスドメインコンテキスト、高信頼性、低遅延のAIソリューションを提供',
+        service_llm_perception_nlp_title: 'マルチモーダル知覚と自然言語処理',
+        service_llm_multimodal_feature_1: '音声モーダル',
+        service_llm_multimodal_feature_2: '言語モーダル',
+        service_llm_multimodal_feature_3: '視覚モーダル',
+        service_llm_multimodal_feature_4: '触覚モーダル',
+        service_llm_multimodal_feature_5: 'ヘッドアップディスプレイ',
+        service_llm_nlp_feature_1: '意図理解',
+        service_llm_nlp_feature_2: '機械翻訳',
+        service_llm_nlp_feature_3: '情報抽出',
+        service_llm_nlp_feature_4: '事前学習',
+        service_llm_nlp_feature_5: '情報検索',
+        service_llm_nlp_feature_6: 'ユーザーモデリング',
+        service_llm_nlp_feature_7: 'テキスト感情認識',
+        service_llm_knowledge_title: '知識計算と質疑応答',
+        service_llm_knowledge_feature_1: '知識オントロジー構築',
+        service_llm_knowledge_feature_2: '知識抽出',
+        service_llm_knowledge_feature_3: '知識融合',
+        service_llm_knowledge_feature_4: '知識推論',
+        service_llm_knowledge_feature_5: '知識計算',
         service_data: '📊 データ収集・クリーニング・トレーニング',
         service_data_desc: 'フルプロセスデータサービス：収集、クリーニング、キャリブレーション、モデルトレーニング、AIシステムを支える高品質データを確保',
         section_partners: 'パートナー',
