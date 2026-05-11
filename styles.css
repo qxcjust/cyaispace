@@ -730,8 +730,11 @@ body {
 .service-card h3 .title-emoji {
     font-size: 1.8rem;
     line-height: 1;
-    filter: none;
-    -webkit-text-fill-color: initial;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    color: inherit;
 }
 
 .service-card h3 .title-text {

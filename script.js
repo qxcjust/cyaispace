@@ -189,7 +189,9 @@ document.addEventListener('DOMContentLoaded', function() {
         voice: {
             title: '语音前端处理和优化',
             titleKey: 'service_voice',
-            description: '传统信号处理与DNN算法结合，兼顾保真性与噪声抑制，通话场景低失真，人机交互高准确率',
+            shortDescription: '传统信号处理与DNN算法结合，保真降噪，通话低失真，交互高准确',
+            shortDescriptionKey: 'service_voice_short_desc',
+            description: '使用传统信号处理结合深度神经网络算法，兼顾传统信号处理的保真性和深度神经网络算法的非稳态噪声抑制能力，在通话场景中保证去降噪效果的同时，保证语音较小的失真性；在人机交互场景中能大幅提升识别准确率',
             descriptionKey: 'service_voice_desc',
             humansTitle: '人人交互',
             humansTitleKey: 'service_voice_humans_title',
@@ -247,10 +249,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const serviceModal = document.getElementById('serviceModal');
     const serviceModalTitle = document.getElementById('serviceModalTitle');
     const serviceModalDescription = document.getElementById('serviceModalDescription');
+    const serviceHumansSection = document.getElementById('serviceHumansSection');
     const serviceHumansTitle = document.getElementById('serviceHumansTitle');
     const serviceHumansFeatures = document.getElementById('serviceHumansFeatures');
+    const serviceHciSection = document.getElementById('serviceHciSection');
     const serviceHciTitle = document.getElementById('serviceHciTitle');
     const serviceHciFeatures = document.getElementById('serviceHciFeatures');
+    const serviceFeaturesSection = document.getElementById('serviceFeaturesSection');
+    const serviceFeaturesTitle = document.getElementById('serviceFeaturesTitle');
+    const serviceFeatures = document.getElementById('serviceFeatures');
+    const serviceTtsSection = document.getElementById('serviceTtsSection');
+    const serviceTtsTitle = document.getElementById('serviceTtsTitle');
+    const serviceTtsFeatures = document.getElementById('serviceTtsFeatures');
     
     // 更新服务弹窗内容
     function updateServiceModalContent(serviceType) {
@@ -274,6 +284,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // 更新描述
         serviceModalDescription.textContent = translations[lang][data.descriptionKey] || data.description;
         
+        // 重置所有section为隐藏
+        if (serviceHumansSection) serviceHumansSection.style.display = 'none';
+        if (serviceHciSection) serviceHciSection.style.display = 'none';
+        if (serviceFeaturesSection) serviceFeaturesSection.style.display = 'none';
+        if (serviceTtsSection) serviceTtsSection.style.display = 'none';
+        
         // 如果有"人人交互"板块
         if (data.humansTitleKey && serviceHumansTitle) {
             serviceHumansTitle.textContent = translations[lang][data.humansTitleKey] || data.humansTitle;
@@ -285,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     serviceHumansFeatures.appendChild(li);
                 });
             }
+            serviceHumansSection.style.display = 'block';
         }
         
         // 如果有"人机交互"板块
@@ -298,6 +315,35 @@ document.addEventListener('DOMContentLoaded', function() {
                     serviceHciFeatures.appendChild(li);
                 });
             }
+            serviceHciSection.style.display = 'block';
+        }
+        
+        // 如果有"核心功能"板块
+        if (data.featuresTitleKey && serviceFeaturesTitle) {
+            serviceFeaturesTitle.textContent = translations[lang][data.featuresTitleKey] || data.featuresTitle;
+            serviceFeatures.innerHTML = '';
+            if (data.features) {
+                data.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = translations[lang][feature.key] || feature.key;
+                    serviceFeatures.appendChild(li);
+                });
+            }
+            serviceFeaturesSection.style.display = 'block';
+        }
+        
+        // 如果有"TTS语音播报"板块
+        if (data.ttsTitleKey && serviceTtsTitle) {
+            serviceTtsTitle.textContent = translations[lang][data.ttsTitleKey] || data.ttsTitle;
+            serviceTtsFeatures.innerHTML = '';
+            if (data.ttsFeatures) {
+                data.ttsFeatures.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = translations[lang][feature.key] || feature.key;
+                    serviceTtsFeatures.appendChild(li);
+                });
+            }
+            serviceTtsSection.style.display = 'block';
         }
     }
     
@@ -603,6 +649,7 @@ const translations = {
         product_aibrain_feature_6: '✓ 开放生态：支持第三方技能插件扩展',
         section_services: '服务矩阵',
         service_voice: '🎙️ 语音前端处理和优化',
+        service_voice_short_desc: '传统信号处理与DNN算法结合，保真降噪，通话低失真，交互高准确',
         service_voice_desc: '传统信号处理与DNN算法结合，兼顾保真性与噪声抑制，通话场景低失真，人机交互高准确率',
         service_voice_humans_title: '人人交互',
         service_voice_humans_feature_1: '智能降噪：抑制稳态和非稳态噪声25db，覆盖100+声学场景',
@@ -616,6 +663,15 @@ const translations = {
         service_voice_hci_feature_4: '动态DOA：支持设备在移动中动态侦测计算',
         service_multilang: '💬 多语言会话定制服务',
         service_multilang_desc: '支持多国语言定制开发，方言识别，个性化语音交互方案设计',
+        service_multilang_features_title: '核心功能',
+        service_multilang_feature_1: 'Oneshot：云+端混合识别技术，唤醒和命令一起说，免去唤醒后等待的时间，交互时间缩短50%',
+        service_multilang_feature_2: '全双工：识别打断，连续交互，低延时高拒识',
+        service_multilang_feature_3: '一语多意图：一句话多个指令控制，"你好小度~往前走，今天天气"',
+        service_multilang_feature_4: '方言识别：支持多种方言定制开发',
+        service_multilang_tts_title: 'TTS语音播报',
+        service_multilang_tts_feature_1: '支持男女不同音色超拟人TTS',
+        service_multilang_tts_feature_2: '支持方言TTS播报（不同方言可开发）',
+        service_multilang_tts_feature_3: '支持带情感的TTS播报：高兴、悲伤、中性',
         service_llm: '🧠 大模型定制开发服务',
         service_llm_desc: '基于先进大模型技术，提供多意图理解、跨域上下文、高可靠性、低延迟的AI解决方案',
         service_data: '📊 数据采集清洗标定训练',
@@ -761,6 +817,15 @@ const translations = {
         service_voice_hci_feature_4: 'Dynamic DOA: Supports dynamic detection and calculation while device is moving',
         service_multilang: '💬 Multi-language Conversation Customization',
         service_multilang_desc: 'Supporting multi-language custom development, dialect recognition, personalized voice interaction solution design',
+        service_multilang_features_title: 'Key Features',
+        service_multilang_feature_1: 'Oneshot: Cloud-edge hybrid recognition technology, wake-up and command together, eliminates waiting time after wake-up, reduces interaction time by 50%',
+        service_multilang_feature_2: 'Full-duplex: Interrupt recognition, continuous interaction, low latency with high rejection rate',
+        service_multilang_feature_3: 'Multi-intent: Multiple commands in one sentence, "Hello Xiaodu~Go forward, what\'s the weather today"',
+        service_multilang_feature_4: 'Dialect Recognition: Support for custom development of multiple dialects',
+        service_multilang_tts_title: 'TTS Voice Broadcasting',
+        service_multilang_tts_feature_1: 'Support for male/female different voice tones with hyper-realistic TTS',
+        service_multilang_tts_feature_2: 'Support for dialect TTS broadcasting (different dialects can be developed)',
+        service_multilang_tts_feature_3: 'Support for emotional TTS broadcasting: happy, sad, neutral',
         service_llm: '🧠 Large Model Custom Development',
         service_llm_desc: 'Based on advanced large model technology, providing multi-intent understanding, cross-domain context, high reliability, low-latency AI solutions',
         service_data: '📊 Data Collection, Cleaning & Training',
@@ -910,6 +975,15 @@ const translations = {
         service_voice_hci_feature_4: 'ダイナミックDOA：デバイス移動中の動的検出と計算をサポート',
         service_multilang: '💬 多言語会話カスタマイズサービス',
         service_multilang_desc: '多国語のカスタム開発、方言認識、パーソナライズされた音声対話ソリューション設計をサポート',
+        service_multilang_features_title: '主要機能',
+        service_multilang_feature_1: 'Oneshot：クラウド+エッジ混合認識技術、起動とコマンドを同時に発話、起動後の待ち時間を省略、対話時間を50%短縮',
+        service_multilang_feature_2: '全二重：割り込み認識、連続対話、低遅延で高い拒否識別率',
+        service_multilang_feature_3: '一語多意図：一文で複数のコマンド制御、「こんにちはシャオドゥ~前に進んで、今日の天気」',
+        service_multilang_feature_4: '方言認識：複数の方言のカスタム開発をサポート',
+        service_multilang_tts_title: 'TTS音声放送',
+        service_multilang_tts_feature_1: '男女の異なる音色の超リアルTTSをサポート',
+        service_multilang_tts_feature_2: '方言TTS放送をサポート（異なる方言を開発可能）',
+        service_multilang_tts_feature_3: '感情付きTTS放送をサポート：嬉しい、悲しい、ニュートラル',
         service_llm: '🧠 大規模モデルカスタム開発サービス',
         service_llm_desc: '先進の大規模モデル技術に基づき、マルチ意図理解、クロスドメインコンテキスト、高信頼性、低遅延のAIソリューションを提供',
         service_data: '📊 データ収集・クリーニング・トレーニング',
@@ -945,6 +1019,23 @@ function switchLanguage(lang) {
         }
     });
     
+    // 为服务卡片标题分离emoji和文字
+    document.querySelectorAll('.service-card h3[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            const fullTitle = translations[lang][key];
+            const emojiRegex = /^([^a-zA-Z0-9\u4e00-\u9fff\s]+)\s*/;
+            const match = emojiRegex.exec(fullTitle);
+            if (match && match[1]) {
+                const emoji = match[1].trim();
+                const text = fullTitle.substring(match[0].length).trim();
+                element.innerHTML = `<span class="title-emoji">${emoji}</span><span class="title-text">${text}</span>`;
+            } else {
+                element.textContent = fullTitle;
+            }
+        }
+    });
+    
     // 更新选中状态
     document.querySelectorAll('.language-option').forEach(opt => {
         opt.classList.remove('active');
@@ -962,43 +1053,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const preferredLang = localStorage.getItem('preferred-language') || 'zh';
     switchLanguage(preferredLang);
     
-    // 为服务卡片标题分离emoji和文字
-    document.querySelectorAll('.service-card h3[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[preferredLang] && translations[preferredLang][key]) {
-            const fullTitle = translations[preferredLang][key];
-            const emojiRegex = /^([^a-zA-Z0-9\u4e00-\u9fff\s]+)\s*/;
-            const match = emojiRegex.exec(fullTitle);
-            if (match && match[1]) {
-                const emoji = match[1].trim();
-                const text = fullTitle.substring(match[0].length).trim();
-                element.innerHTML = `<span class="title-emoji">${emoji}</span><span class="title-text">${text}</span>`;
-            }
-        }
-    });
-    
     // 绑定语言选项点击事件
     document.querySelectorAll('.language-option').forEach(option => {
         option.addEventListener('click', function() {
             const lang = this.getAttribute('data-lang');
             switchLanguage(lang);
-            
-            // 语言切换时更新服务卡片标题
-            document.querySelectorAll('.service-card h3[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    const fullTitle = translations[lang][key];
-                    const emojiRegex = /^([^a-zA-Z0-9\u4e00-\u9fff\s]+)\s*/;
-                    const match = emojiRegex.exec(fullTitle);
-                    if (match && match[1]) {
-                        const emoji = match[1].trim();
-                        const text = fullTitle.substring(match[0].length).trim();
-                        element.innerHTML = `<span class="title-emoji">${emoji}</span><span class="title-text">${text}</span>`;
-                    } else {
-                        element.textContent = fullTitle;
-                    }
-                }
-            });
         });
     });
 });

@@ -90,7 +90,7 @@
             <div class="services-grid">
                 <div class="service-card" data-service="voice">
                     <h3 data-i18n="service_voice">🎙️ 语音前端处理和优化</h3>
-                    <p data-i18n="service_voice_desc">传统信号处理与DNN算法结合，支持64Hz精度调节、65dB回声消除、25dB噪声抑制，覆盖100+声学场景</p>
+                    <p data-i18n="service_voice_short_desc">传统信号处理与DNN算法结合，保真降噪，通话低失真，交互高准确</p>
                 </div>
                 <div class="service-card" data-service="multilang">
                     <h3 data-i18n="service_multilang">💬 多语言会话定制服务</h3>
@@ -212,13 +212,21 @@
             <div class="modal-body">
                 <p id="serviceModalDescription"></p>
                 <div class="modal-details">
-                    <div class="detail-section">
+                    <div class="detail-section" id="serviceHumansSection" style="display: none;">
                         <h3 id="serviceHumansTitle"></h3>
                         <ul id="serviceHumansFeatures"></ul>
                     </div>
-                    <div class="detail-section">
+                    <div class="detail-section" id="serviceHciSection" style="display: none;">
                         <h3 id="serviceHciTitle"></h3>
                         <ul id="serviceHciFeatures"></ul>
+                    </div>
+                    <div class="detail-section" id="serviceFeaturesSection" style="display: none;">
+                        <h3 id="serviceFeaturesTitle"></h3>
+                        <ul id="serviceFeatures"></ul>
+                    </div>
+                    <div class="detail-section" id="serviceTtsSection" style="display: none;">
+                        <h3 id="serviceTtsTitle"></h3>
+                        <ul id="serviceTtsFeatures"></ul>
                     </div>
                 </div>
             </div>
