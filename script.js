@@ -103,8 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { key: 'product_camera_feature_2' },
                 { key: 'product_camera_feature_3' },
                 { key: 'product_camera_feature_4' },
-                { key: 'product_camera_feature_5' },
-                { key: 'product_camera_feature_6' }
+                { key: 'product_camera_feature_5' }
             ]
         },
         radar: {
@@ -319,7 +318,6 @@ const translations = {
         product_camera_feature_3: '✓ 内置传感器：6DOF IMU，气压计/磁力计（可选）',
         product_camera_feature_4: '✓ 颜色校准：3D校准基础上增加颜色校准',
         product_camera_feature_5: '✓ 宽平台支持：支持Nvidia Nano Super/Jetson Orin/NXP i.Mx95',
-        product_camera_feature_6: '✓ 汽车级可靠性:通过严格环境测试,结构稳固',
         product_radar: '🎯 激光雷达',
         product_radar_short_desc: '超广角激光雷达,精准探测与感知',
         product_radar_desc: '超广角激光雷达,无运动部件,可靠耐久。探测距离0.1m-50m,超大广角140°×100°,极小盲区10cm。造型小巧灵活,支持卫星架构模组化设计。IP6K7/IP6K9K防护等级,工作温度-40°C~85°C,广泛应用于人形机器人、辅助驾驶、智慧城市、智慧高速、智慧轨交等领域',
@@ -425,7 +423,6 @@ const translations = {
         product_camera_feature_3: '✓ Built-in Sensors: 6DOF IMU, barometer/magnetometer (optional)',
         product_camera_feature_4: '✓ Color Calibration: Color calibration on top of 3D calibration',
         product_camera_feature_5: '✓ Wide Platform Support: Compatible with Nvidia Nano Super/Jetson Orin/NXP i.Mx95',
-        product_camera_feature_6: '✓ Automotive-Grade Reliability: Passed strict environmental tests with robust structure',
         product_radar: '🎯 LiDAR',
         product_radar_short_desc: 'Ultra-Wide Angle LiDAR for Accurate Detection',
         product_radar_desc: 'Ultra-wide angle LiDAR with no moving parts, reliable and durable. Detection range 0.1m-50m, ultra-wide FOV 140°×100°, minimal blind zone 10cm. Compact and flexible, supports satellite architecture modular design. IP6K7/IP6K9K protection rating, operating temperature -40°C~85°C, widely used in humanoid robots, ADAS, smart cities, smart highways, smart rail transit, and more',
@@ -531,7 +528,6 @@ const translations = {
         product_camera_feature_3: '✓ 内蔵センサー：6DOF IMU、気圧計/磁力計（オプション）',
         product_camera_feature_4: '✓ カラーキャリブレーション：3Dキャリブレーションの上にカラーキャリブレーション',
         product_camera_feature_5: '✓ 幅広いプラットフォームサポート：Nvidia Nano Super/Jetson Orin/NXP i.Mx95に対応',
-        product_camera_feature_6: '✓ 車載グレードの信頼性：厳格な環境試験をクリア、構造が頑丈',
         product_camera_scenario_1: ' 自動運転とADASシステム',
         product_camera_scenario_2: '🤖 マシンビジョンとロボティクス',
         product_camera_scenario_3: '🚁 ドローン',
