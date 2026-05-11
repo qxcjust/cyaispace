@@ -196,8 +196,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!data) return;
         
-        // 更新标题
-        modalTitle.textContent = translations[lang][data.titleKey] || data.title;
+        // 更新标题 - 分离emoji和文字
+        const fullTitle = translations[lang][data.titleKey] || data.title;
+        // 提取开头的emoji（简单方法：匹配非字母数字非中文的第一个字符）
+        const emojiRegex = /^([^a-zA-Z0-9\u4e00-\u9fff\s]+)\s*/;
+        const match = emojiRegex.exec(fullTitle);
+        if (match && match[1]) {
+            const emoji = match[1].trim();
+            const text = fullTitle.substring(match[0].length).trim();
+            modalTitle.innerHTML = `<span class="title-emoji">${emoji}</span><span class="title-text">${text}</span>`;
+        } else {
+            modalTitle.textContent = fullTitle;
+        }
         
         // 更新描述
         modalDescription.textContent = translations[lang][data.descriptionKey] || data.description;
