@@ -236,9 +236,9 @@ document.addEventListener('DOMContentLoaded', function() {
             titleKey: 'service_llm',
             description: '基于先进大模型技术，提供多意图理解、跨域上下文、高可靠性、低延迟的AI解决方案',
             descriptionKey: 'service_llm_desc',
-            perceptionNlpTitle: '多模态感知与自然语言处理',
-            perceptionNlpTitleKey: 'service_llm_perception_nlp_title',
-            perceptionNlpFeatures: [
+            featuresTitle: '认知智能',
+            featuresTitleKey: 'service_llm_features_title',
+            features: [
                 { key: 'service_llm_multimodal_feature_1' },
                 { key: 'service_llm_multimodal_feature_2' },
                 { key: 'service_llm_multimodal_feature_3' },
@@ -250,11 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { key: 'service_llm_nlp_feature_4' },
                 { key: 'service_llm_nlp_feature_5' },
                 { key: 'service_llm_nlp_feature_6' },
-                { key: 'service_llm_nlp_feature_7' }
-            ],
-            knowledgeTitle: '知识计算及问答',
-            knowledgeTitleKey: 'service_llm_knowledge_title',
-            knowledgeFeatures: [
+                { key: 'service_llm_nlp_feature_7' },
                 { key: 'service_llm_knowledge_feature_1' },
                 { key: 'service_llm_knowledge_feature_2' },
                 { key: 'service_llm_knowledge_feature_3' },
@@ -266,7 +262,49 @@ document.addEventListener('DOMContentLoaded', function() {
             title: '数据采集清洗标定训练',
             titleKey: 'service_data',
             description: '全流程数据服务：采集、清洗、标定、模型训练，确保高质量数据支撑AI系统',
-            descriptionKey: 'service_data_desc'
+            descriptionKey: 'service_data_desc',
+            processTitle: '数据处理流程',
+            processTitleKey: 'service_data_process_title',
+            processSteps: [
+                { 
+                    step: '01',
+                    titleKey: 'service_data_step_1_title',
+                    features: [
+                        { key: 'service_data_step_1_feature_1' },
+                        { key: 'service_data_step_1_feature_2' }
+                    ]
+                },
+                { 
+                    step: '02',
+                    titleKey: 'service_data_step_2_title',
+                    features: [
+                        { key: 'service_data_step_2_feature_1' },
+                        { key: 'service_data_step_2_feature_2' }
+                    ]
+                },
+                { 
+                    step: '03',
+                    titleKey: 'service_data_step_3_title',
+                    features: [
+                        { key: 'service_data_step_3_feature_1' },
+                        { key: 'service_data_step_3_feature_2' }
+                    ]
+                },
+                { 
+                    step: '04',
+                    titleKey: 'service_data_step_4_title',
+                    features: [
+                        { key: 'service_data_step_4_feature_1' }
+                    ]
+                },
+                { 
+                    step: '05',
+                    titleKey: 'service_data_step_5_title',
+                    features: [
+                        { key: 'service_data_step_5_feature_1' }
+                    ]
+                }
+            ]
         }
     };
     
@@ -292,6 +330,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const serviceKnowledgeSection = document.getElementById('serviceKnowledgeSection');
     const serviceKnowledgeTitle = document.getElementById('serviceKnowledgeTitle');
     const serviceKnowledgeFeatures = document.getElementById('serviceKnowledgeFeatures');
+    const serviceDataProcessSection = document.getElementById('serviceDataProcessSection');
+    const serviceDataProcessTitle = document.getElementById('serviceDataProcessTitle');
+    const serviceDataProcessSteps = document.getElementById('serviceDataProcessSteps');
     
     // 更新服务弹窗内容
     function updateServiceModalContent(serviceType) {
@@ -322,6 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (serviceTtsSection) serviceTtsSection.style.display = 'none';
         if (servicePerceptionNlpSection) servicePerceptionNlpSection.style.display = 'none';
         if (serviceKnowledgeSection) serviceKnowledgeSection.style.display = 'none';
+        if (serviceDataProcessSection) serviceDataProcessSection.style.display = 'none';
         
         // 如果有"人人交互"板块
         if (data.humansTitleKey && serviceHumansTitle) {
@@ -363,6 +405,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             serviceFeaturesSection.style.display = 'block';
+            // 如果是大模型服务（只有一个板块），添加独占一行的类
+            if (serviceType === 'llm') {
+                serviceFeaturesSection.classList.add('full-width-section');
+            } else {
+                serviceFeaturesSection.classList.remove('full-width-section');
+            }
         }
         
         // 如果有"TTS语音播报"板块
@@ -405,6 +453,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             serviceKnowledgeSection.style.display = 'block';
+        }
+        
+        // 如果有"数据处理流程"板块
+        if (data.processTitleKey && serviceDataProcessTitle) {
+            serviceDataProcessTitle.textContent = translations[lang][data.processTitleKey] || data.processTitle;
+            serviceDataProcessSteps.innerHTML = '';
+            
+            // 创建流程步骤容器
+            const stepsContainer = document.createElement('div');
+            stepsContainer.className = 'data-process-steps';
+            
+            if (data.processSteps) {
+                data.processSteps.forEach(stepData => {
+                    const stepDiv = document.createElement('div');
+                    stepDiv.className = 'data-process-step';
+                    
+                    const stepHeader = document.createElement('div');
+                    stepHeader.className = 'step-header';
+                    const stepNumber = document.createElement('span');
+                    stepNumber.className = 'step-number';
+                    stepNumber.textContent = stepData.step;
+                    const stepTitle = document.createElement('h4');
+                    stepTitle.textContent = translations[lang][stepData.titleKey] || stepData.titleKey;
+                    stepHeader.appendChild(stepNumber);
+                    stepHeader.appendChild(stepTitle);
+                    stepDiv.appendChild(stepHeader);
+                    
+                    const stepList = document.createElement('ul');
+                    stepList.className = 'step-features';
+                    if (stepData.features) {
+                        stepData.features.forEach(feature => {
+                            const li = document.createElement('li');
+                            li.textContent = translations[lang][feature.key] || feature.key;
+                            stepList.appendChild(li);
+                        });
+                    }
+                    stepDiv.appendChild(stepList);
+                    stepsContainer.appendChild(stepDiv);
+                });
+            }
+            serviceDataProcessSteps.appendChild(stepsContainer);
+            serviceDataProcessSection.style.display = 'block';
         }
     }
     
@@ -756,6 +846,20 @@ const translations = {
         service_llm_knowledge_feature_5: '知识计算',
         service_data: '📊 数据采集清洗标定训练',
         service_data_desc: '全流程数据服务：采集、清洗、标定、模型训练，确保高质量数据支撑AI系统',
+        service_data_process_title: '数据处理流程',
+        service_data_step_1_title: '数据采集',
+        service_data_step_1_feature_1: '首要环节。提供改制车辆方案和实施改制车辆流程',
+        service_data_step_1_feature_2: '按客户需求执行数据采集计划',
+        service_data_step_2_title: '数据清洗',
+        service_data_step_2_feature_1: '对数据进行筛检，去重',
+        service_data_step_2_feature_2: '对数据集中存在的异常值与缺失值进行查缺补漏，同时平滑噪声数据',
+        service_data_step_3_title: '数据标注',
+        service_data_step_3_feature_1: '由标注员负责标注数据',
+        service_data_step_3_feature_2: '可采用分类标注、标框标注、区域标注、描点标注或其他标注方法进行',
+        service_data_step_4_title: '数据质检',
+        service_data_step_4_feature_1: '关键环节，采用抽检，不合格整体打回的形式',
+        service_data_step_5_title: '数据验收/交付',
+        service_data_step_5_feature_1: '最终的数据成果交付',
         section_partners: '合作伙伴',
         partners_note: '（排名不分先后）',
         contact_name: '联系人：',
@@ -884,6 +988,7 @@ const translations = {
         product_aibrain_feature_6: '✓ Open Ecosystem: Support for Third-party Skill Plugin Extensions',
         section_services: 'Service Matrix',
         service_voice: '🎙️ Voice Front-end Processing & Optimization',
+        service_voice_short_desc: 'Traditional signal processing combined with DNN algorithms, fidelity noise reduction, low distortion in calls, high accuracy in interaction',
         service_voice_desc: 'Combines traditional signal processing with DNN algorithms, balancing fidelity and noise suppression. Low distortion for calls, high accuracy for HMI',
         service_voice_humans_title: 'Human-Human Interaction',
         service_voice_humans_feature_1: 'Smart Noise Reduction: Suppresses steady and non-stationary noise by 25db, covers 100+ acoustic scenarios',
@@ -929,6 +1034,20 @@ const translations = {
         service_llm_knowledge_feature_5: 'Knowledge Computing',
         service_data: '📊 Data Collection, Cleaning & Training',
         service_data_desc: 'Full-process data services: collection, cleaning, calibration, model training, ensuring high-quality data to support AI systems',
+        service_data_process_title: 'Data Processing Workflow',
+        service_data_step_1_title: 'Data Collection',
+        service_data_step_1_feature_1: 'Primary step. Provide vehicle modification plan and implementation process',
+        service_data_step_1_feature_2: 'Execute data collection plan according to customer requirements',
+        service_data_step_2_title: 'Data Cleaning',
+        service_data_step_2_feature_1: 'Screen and de-duplicate data',
+        service_data_step_2_feature_2: 'Fill in missing values and outliers, smooth noisy data',
+        service_data_step_3_title: 'Data Annotation',
+        service_data_step_3_feature_1: 'Annotated by annotators',
+        service_data_step_3_feature_2: 'Classification annotation, bounding box annotation, region annotation, point annotation or other methods',
+        service_data_step_4_title: 'Data Quality Inspection',
+        service_data_step_4_feature_1: 'Critical step. Sampling inspection, overall return if unqualified',
+        service_data_step_5_title: 'Data Acceptance/Delivery',
+        service_data_step_5_feature_1: 'Final data deliverables',
         section_partners: 'Partners',
         partners_note: '(In no particular order)',
         contact_name: 'Contact:',
@@ -1061,6 +1180,7 @@ const translations = {
         product_aibrain_feature_6: '✓ オープンエコシステム：サードパーティスキルプラグイン拡張をサポート',
         section_services: 'サービスマトリクス',
         service_voice: '🎙️ 音声フロントエンド処理と最適化',
+        service_voice_short_desc: '従来信号処理とDNNアルゴリズムを組み合わせ、忠実性ノイズ低減、通話低歪み、対話高精度',
         service_voice_desc: '従来信号処理とDNNアルゴリズムを組み合わせ、忠実性とノイズ抑制のバランスを取ります。通話では低歪み、HMIでは高精度',
         service_voice_humans_title: '人人交互',
         service_voice_humans_feature_1: 'スマートノイズリダクション：定常および非定常ノイズを25db抑制、100+音響シナリオをカバー',
@@ -1083,7 +1203,7 @@ const translations = {
         service_multilang_tts_feature_1: '男女の異なる音色の超リアルTTSをサポート',
         service_multilang_tts_feature_2: '方言TTS放送をサポート（異なる方言を開発可能）',
         service_multilang_tts_feature_3: '感情付きTTS放送をサポート：嬉しい、悲しい、ニュートラル',
-        service_llm: '🧠 大規模モデルカスタム開発サービス',
+        service_llm: '🧠 モデルカスタム開発サービス',
         service_llm_desc: '先進の大規模モデル技術に基づき、マルチ意図理解、クロスドメインコンテキスト、高信頼性、低遅延のAIソリューションを提供',
         service_llm_perception_nlp_title: 'マルチモーダル知覚と自然言語処理',
         service_llm_multimodal_feature_1: '音声モーダル',
@@ -1106,6 +1226,20 @@ const translations = {
         service_llm_knowledge_feature_5: '知識計算',
         service_data: '📊 データ収集・クリーニング・トレーニング',
         service_data_desc: 'フルプロセスデータサービス：収集、クリーニング、キャリブレーション、モデルトレーニング、AIシステムを支える高品質データを確保',
+        service_data_process_title: 'データ処理フロー',
+        service_data_step_1_title: 'データ収集',
+        service_data_step_1_feature_1: '主要工程。改造車両プランと実施改造車両フローを提供',
+        service_data_step_1_feature_2: '顧客のニーズに応じてデータ収集計画を実行',
+        service_data_step_2_title: 'データクリーニング',
+        service_data_step_2_feature_1: 'データをスクリーニングし、重複を削除',
+        service_data_step_2_feature_2: 'データセットの異常値と欠損値を補充し、ノイズデータを平滑化',
+        service_data_step_3_title: 'データ注釈',
+        service_data_step_3_feature_1: '注釈員がデータ注釈を担当',
+        service_data_step_3_feature_2: '分類注釈、バウンディングボックス注釈、領域注釈、ポイント注釈などの方法を採用可能',
+        service_data_step_4_title: 'データ品質検査',
+        service_data_step_4_feature_1: '重要工程、サンプリング検査を採用、不合格の場合は全体差し戻し',
+        service_data_step_5_title: 'データ受入/引渡し',
+        service_data_step_5_feature_1: '最終的なデータ成果の引渡し',
         section_partners: 'パートナー',
         partners_note: '（順不同）',
         contact_name: '連絡先：',
@@ -1128,6 +1262,14 @@ function switchLanguage(lang) {
         'ja': 'ja'
     };
     document.documentElement.lang = langMap[lang] || 'zh-CN';
+    
+    // 为不同语言设置最佳字体
+    const fontMap = {
+        'zh': "'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Source Han Sans SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif",
+        'en': "'SF Pro Display', 'Inter', 'SF Pro Text', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif",
+        'ja': "'Hiragino Kaku Gothic Pro', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', 'MS Gothic', sans-serif"
+    };
+    document.body.style.fontFamily = fontMap[lang] || fontMap['zh'];
     
     // 更新所有带有data-i18n属性的元素
     document.querySelectorAll('[data-i18n]').forEach(element => {
