@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.064",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.064.exe",
-  "size": 34157195,
-  "sha256": "0c23078306bdaf4797502a8dc05b473430d67f6fb27ab18f15964f4565f7b9a6",
-  "notes": "实时状态 IDC 卡片新增「WSHF 电源」格（触发→ON / 关闭→已关闭 / 失败→红 / 未下发→未触发）；关于页去掉打开下载页按钮；新增 IDC WSHF 电源输出测试项。",
+  "version": "0.2.0.065",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.065.exe",
+  "size": 34163909,
+  "sha256": "2b942079ed17e486bbbc68c1fb55fc359b81bd5fcc390c271cc78384e3a77cc9",
+  "notes": "压测环色改三档：低于设定下限红（并记录）、1 分钟内低过转黄、一直达标绿；记录表同规则（新红旧黄）。",
   "published": "2026-11-20"
 }
