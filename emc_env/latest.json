@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.062",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.062.exe",
-  "size": 34151834,
-  "sha256": "29e057fd28d15e3e9f13034af478855b4762f824102ea9a5a1f28c37d76020ef",
-  "notes": "新增 IDC 侧 WSHF 电源输出测试项（触发后保持 ON，直到下发关闭）；压测偏差提示改单向（低于目标 -N 才标红，N 可配）；NPU 阈值独立；设置 → 帮助 / 关于本系统（检查更新 + 一键下载安装）。",
+  "version": "0.2.0.063",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.063.exe",
+  "size": 34156602,
+  "sha256": "af7a6bd2bcd01161d834ec39693b9fa597de2c2741893f27176d7efe56677a73",
+  "notes": "关于页去掉「打开下载页」（只保留检查更新 / 下载并安装）；有更新时「下载并安装」为主按钮、「检查更新」退为描边；新增 IDC WSHF 电源输出测试项。",
   "published": "2026-11-20"
 }
