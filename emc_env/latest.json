@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.068",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.068.exe",
-  "size": 34163838,
-  "sha256": "b06a216aad8ff90d8f8b890a6e0331921f6f5c4ccfd3132b42ea84cccb70692d",
-  "notes": "UFS 项隐掉「UFS 状态（识别+健康）」只读行；NPU 压测默认改 NSP 0,1,2 / HMX 50 / HVX 50。",
+  "version": "0.2.0.069",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.069.exe",
+  "size": 34167350,
+  "sha256": "fe514af5adcd869814089d1ff72599d82d0ff13248ee56c59c1e9dc608768305",
+  "notes": "启停并成一行不再依赖命令顺序：IVI 的「CPU/GPU/NPU/内存压测」现在是一行（停止 + 执行）。",
   "published": "2026-11-21"
 }
