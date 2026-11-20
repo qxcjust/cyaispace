@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.065",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.065.exe",
-  "size": 34163909,
-  "sha256": "2b942079ed17e486bbbc68c1fb55fc359b81bd5fcc390c271cc78384e3a77cc9",
-  "notes": "压测环色改三档：低于设定下限红（并记录）、1 分钟内低过转黄、一直达标绿；记录表同规则（新红旧黄）。",
+  "version": "0.2.0.066",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.066.exe",
+  "size": 34160352,
+  "sha256": "b8df36737c747114bdb682964d64d9017890ffe2846827e72b437da5096db310",
+  "notes": "逐核环按目标判红/绿；有目标时只记录「低于目标」，不再刷「高位」；配置条新增「启动后 20 秒开始监控」，爬坡期不判色不记录。",
   "published": "2026-11-20"
 }
