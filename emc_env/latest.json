@@ -1,0 +1,8 @@
+{
+  "version": "0.2.0.061",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.061.exe",
+  "size": 34152708,
+  "sha256": "f6590970d9c25b154781e1f374ae8691a1eab7c78533f89c5b4cfde45a270bd0",
+  "notes": "压测偏差提示改单向（低于目标 -N 才标红，N 可配）；NPU 阈值独立；新增「设置 → 帮助 / 关于本系统」（可检查更新、一键下载安装）；安装程序首尾页深色修复。",
+  "published": "2026-11-20"
+}

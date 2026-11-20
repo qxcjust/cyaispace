@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMC / ENV 测试上位机 · 下载</title>
+<style>
+  :root{
+    --navy:#0b1220; --navy2:#13203a; --line:#22314f;
+    --tx:#e8eef9; --dim:#9fb3d1; --mute:#6b7f9e;
+    --blue:#2563eb; --blue2:#3b82f6; --red:#ef4444;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; background:var(--navy); color:var(--tx);
+    font:15px/1.65 "Microsoft YaHei UI","Segoe UI",system-ui,sans-serif;
+    display:flex; align-items:center; justify-content:center; padding:32px 20px;
+  }
+  .card{
+    width:min(680px,100%); background:linear-gradient(160deg,#12213c,#0d1728);
+    border:1px solid var(--line); border-radius:16px; padding:36px 34px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+  }
+  h1{font-size:24px; margin:0 0 6px; letter-spacing:.3px}
+  .sub{color:var(--mute); font-size:13px; margin-bottom:26px}
+  .row{display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:22px}
+  .ver{
+    font-weight:700; color:#bfd4f5; background:#0e1b30;
+    border:1px solid var(--line); border-radius:9px; padding:5px 12px; font-size:13px;
+  }
+  .btn{
+    display:inline-block; text-decoration:none; color:#fff; font-weight:600;
+    background:linear-gradient(180deg,var(--blue2),var(--blue));
+    border:1px solid #1e40af; border-radius:9px; padding:10px 20px; font-size:14px;
+  }
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent; border-color:var(--line); color:var(--dim)}
+  .btn.ghost:hover{border-color:var(--mute); color:var(--tx)}
+  h2{font-size:13px; letter-spacing:1.4px; color:var(--mute); font-weight:700;
+     margin:26px 0 10px; text-transform:uppercase}
+  ul{margin:0; padding-left:20px; color:var(--dim); font-size:14px}
+  li{margin:4px 0}
+  .note{
+    margin-top:24px; padding-top:16px; border-top:1px solid var(--line);
+    color:var(--mute); font-size:12.5px;
+  }
+  .note b{color:var(--dim); font-weight:600}
+  code{background:#0e1b30; border:1px solid var(--line); border-radius:5px;
+       padding:1px 6px; font-size:12px; color:#a9c6fb}
+  .warn{color:var(--red); font-size:12px; margin-top:18px}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>EMC / ENV 测试上位机</h1>
+  <div class="sub">Windows 台架测试工具 · 单机安装，按用户装，无需管理员</div>
+
+  <div class="row">
+    <span class="ver">最新版本 <b id="ver">v0.2.0.061</b></span>
+    <a class="btn" href="EMC-ENV-TestBench-Setup-0.2.0.061.exe">下载安装包</a>
+    <a class="btn ghost" href="latest.json">版本清单 JSON</a>
+  </div>
+
+  <h2>本次更新</h2>
+  <ul>
+    <li>压测偏差提示改为单向：只标「低于目标 −N%」，N 可在页内改；压过头不再标红</li>
+    <li>NPU 压测的阈值独立落盘（不再与 CPU 共用一份配置）</li>
+    <li>顶栏新增「设置 → 帮助 / 关于本系统」，关于页可检查更新并一键下载安装</li>
+    <li>安装程序欢迎页 / 完成页统一深蓝底，完成页文字不再隐形</li>
+  </ul>
+
+  <h2>安装说明</h2>
+  <ul>
+    <li>双击 Setup 安装，路径不要带 <code>#</code>（Qt 找不到平台插件）</li>
+    <li>安装时会请求一次管理员权限，用于放行入站 TCP 9100（Slave 服务）</li>
+    <li>装完默认以工位机（Slave）角色启动；要只开界面，删掉 <code>_internal\config\role.txt</code></li>
+  </ul>
+
+  <div class="note">
+    已经装过的机器：打开程序 → 右上角 <b>设置 → 关于本系统 → 检查更新</b>，
+    程序会读本目录的 <code>latest.json</code>，有新版本时直接下载并启动安装程序。
+  </div>
+  <div class="warn">Harman · 内部工具，请勿外传</div>
+</div>
+</body>
+</html>
