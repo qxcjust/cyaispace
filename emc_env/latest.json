@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.063",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.063.exe",
-  "size": 34156602,
-  "sha256": "af7a6bd2bcd01161d834ec39693b9fa597de2c2741893f27176d7efe56677a73",
-  "notes": "关于页去掉「打开下载页」（只保留检查更新 / 下载并安装）；有更新时「下载并安装」为主按钮、「检查更新」退为描边；新增 IDC WSHF 电源输出测试项。",
+  "version": "0.2.0.064",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.064.exe",
+  "size": 34157195,
+  "sha256": "0c23078306bdaf4797502a8dc05b473430d67f6fb27ab18f15964f4565f7b9a6",
+  "notes": "实时状态 IDC 卡片新增「WSHF 电源」格（触发→ON / 关闭→已关闭 / 失败→红 / 未下发→未触发）；关于页去掉打开下载页按钮；新增 IDC WSHF 电源输出测试项。",
   "published": "2026-11-20"
 }
