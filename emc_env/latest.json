@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.070",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.070.exe",
-  "size": 34165776,
-  "sha256": "aa0a46cca6e8499e6baa3013c9a2b2153e4f9c9adedcb40a7311a2b4e2f15529",
-  "notes": "实时状态页压测项（CPU/GPU/NPU/DRAM/UFS）右上角加记录圆点：1 分钟内低过红、更早黄、从没低过绿。",
+  "version": "0.2.0.071",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.071.exe",
+  "size": 34174326,
+  "sha256": "fb845cb61d73908c9e54484bb860d49e393e3bfb961781c1358ad37ff1c4a774",
+  "notes": "实时状态页的卡片可点：点 IDC/IVI 的 CPU/GPU/NPU/内存/UFS/网络格与外设格，直接跳到功能测试对应项并选中该节点。",
   "published": "2026-11-21"
 }
