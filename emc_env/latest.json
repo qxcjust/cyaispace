@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.069",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.069.exe",
-  "size": 34167350,
-  "sha256": "fe514af5adcd869814089d1ff72599d82d0ff13248ee56c59c1e9dc608768305",
-  "notes": "启停并成一行不再依赖命令顺序：IVI 的「CPU/GPU/NPU/内存压测」现在是一行（停止 + 执行）。",
+  "version": "0.2.0.070",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.070.exe",
+  "size": 34165776,
+  "sha256": "aa0a46cca6e8499e6baa3013c9a2b2153e4f9c9adedcb40a7311a2b4e2f15529",
+  "notes": "实时状态页压测项（CPU/GPU/NPU/DRAM/UFS）右上角加记录圆点：1 分钟内低过红、更早黄、从没低过绿。",
   "published": "2026-11-21"
 }
