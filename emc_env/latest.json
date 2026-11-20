@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.066",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.066.exe",
-  "size": 34160352,
-  "sha256": "b8df36737c747114bdb682964d64d9017890ffe2846827e72b437da5096db310",
-  "notes": "逐核环按目标判红/绿；有目标时只记录「低于目标」，不再刷「高位」；配置条新增「启动后 20 秒开始监控」，爬坡期不判色不记录。",
-  "published": "2026-11-20"
+  "version": "0.2.0.067",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.067.exe",
+  "size": 34161004,
+  "sha256": "f281b7076010367cdabd77c6e551ce979fe0274118db445bf0209afa3311e405",
+  "notes": "压测默认时长改 0：下发即持续跑，直到点「停止」（UFS 原 10m，CPU/GPU/内存出厂命令同步为 0）。",
+  "published": "2026-11-21"
 }
