@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.071",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.071.exe",
-  "size": 34174326,
-  "sha256": "fb845cb61d73908c9e54484bb860d49e393e3bfb961781c1358ad37ff1c4a774",
-  "notes": "实时状态页的卡片可点：点 IDC/IVI 的 CPU/GPU/NPU/内存/UFS/网络格与外设格，直接跳到功能测试对应项并选中该节点。",
+  "version": "0.2.0.072",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.072.exe",
+  "size": 34191388,
+  "sha256": "3f8270c41adf900ff2efd3a6b05316137d5773efe74c3d8951237a93ec5d04ca",
+  "notes": "自动检查更新：启动 10 秒后查一次、之后每 6 小时一次；失败静默并按 6h→12h→24h 退避；查到新版本点红点并首次提示；只提示不自动安装；关于页可关闭自动检查并显示上次检查时间。",
   "published": "2026-11-21"
 }
