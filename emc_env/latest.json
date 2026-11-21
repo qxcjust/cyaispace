@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.072",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.072.exe",
-  "size": 34191388,
-  "sha256": "3f8270c41adf900ff2efd3a6b05316137d5773efe74c3d8951237a93ec5d04ca",
-  "notes": "自动检查更新：启动 10 秒后查一次、之后每 6 小时一次；失败静默并按 6h→12h→24h 退避；查到新版本点红点并首次提示；只提示不自动安装；关于页可关闭自动检查并显示上次检查时间。",
+  "version": "0.2.0.073",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.073.exe",
+  "size": 34126054,
+  "sha256": "3385bea905c7a07c7a00051bda2cc6e6d0de9a284c0a94cda4fa07ffefa9b79c",
+  "notes": "状态页外设卡改为 30 秒主动查询：USS(POST)/WSHF(GET)/BT1·BT2(GET)/IMU·GNSS·AppleIC(POST)/MPIC(GET)，显示 PASS/FAIL/ON/OFF/Connected/Unconnected；蓝牙拆成 BT1、BT2 两张卡。",
   "published": "2026-11-21"
 }
