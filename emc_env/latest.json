@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.074",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.074.exe",
-  "size": 34195896,
-  "sha256": "e7b6308168506adbb003e4d9f9775b11e92391e52dbd12834ad224e7b923eeca",
-  "notes": "修复 073 启动崩溃（page_status 模块缺失，改注释时破坏了文件语法）；状态页外设卡 30 秒主动查询。打包脚本加语法预检。",
+  "version": "0.2.0.075",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.075.exe",
+  "size": 34195926,
+  "sha256": "57508a1b95a68e58dd1168edfdd36e1341d5072adf720ebe63e67da4b93bf22c",
+  "notes": "修复升级安装报「AdbWinApi.dll 写不进去」：安装前结束脱缰的 adb server，并在复制前用删除探测确认可写（不可写时给中文提示而不是中止/重试/忽略三连）；程序退出时自动 adb kill-server。",
   "published": "2026-11-21"
 }
