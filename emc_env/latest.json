@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.075",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.075.exe",
-  "size": 34195926,
-  "sha256": "57508a1b95a68e58dd1168edfdd36e1341d5072adf720ebe63e67da4b93bf22c",
-  "notes": "修复升级安装报「AdbWinApi.dll 写不进去」：安装前结束脱缰的 adb server，并在复制前用删除探测确认可写（不可写时给中文提示而不是中止/重试/忽略三连）；程序退出时自动 adb kill-server。",
-  "published": "2026-11-21"
+  "version": "0.2.0.093",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.093.exe",
+  "size": 40192934,
+  "sha256": "748cc2cf6d7c86cb63aef91a217ae11741a040cff233dbbdfb4a9a4ea7a3c9d6",
+  "notes": "Slave 接口补暴露 12 项（version/GNSS/USS/APPLE/IMU/MPIC/WIFI/WIFI打流/WSHF/S3R/DEEP SLEEP/BT/Display FPS，snap 现取机制）；外设卡+圆点链路 presenter 化，拆「查询失败≠设备FAIL」字段",
+  "published": "2026-11-22"
 }
