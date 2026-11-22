@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.094",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.094.exe",
-  "size": 40199931,
-  "sha256": "3650ad216ad1bfd87cacaf0f6adedbd4f5497634587a65256c916a874154bac3",
-  "notes": "Slave 取数接口再瘦一档：点名查询只回点名的项（available 改为 available_n）；snap 多项并行取数，4 项由 40s 降到 10s",
+  "version": "0.2.0.099",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.099.exe",
+  "size": 40217569,
+  "sha256": "d11008ce2a693477d2e69b3d1c71ff6b8c8267975a643bdc83413f753b61c2ff",
+  "notes": "配置测试与打流改为按「打流」页配置下发（端口对齐，修复打流 Connection refused）；新增 NET_CFG 配置测试项；修自然收尾后账不清导致同一项再也拉不起来",
   "published": "2026-11-22"
 }
