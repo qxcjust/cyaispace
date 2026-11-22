@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.099",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.099.exe",
-  "size": 40217569,
-  "sha256": "d11008ce2a693477d2e69b3d1c71ff6b8c8267975a643bdc83413f753b61c2ff",
-  "notes": "配置测试与打流改为按「打流」页配置下发（端口对齐，修复打流 Connection refused）；新增 NET_CFG 配置测试项；修自然收尾后账不清导致同一项再也拉不起来",
-  "published": "2026-11-22"
+  "version": "0.2.0.101",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.101.exe",
+  "size": 40206261,
+  "sha256": "137153d267a5d1d47eb29a0793c8d0235f4c1c22e958de2f89e01036ebd1e85f",
+  "notes": "STEP_RESULT.detail 回传设备正文；stop_cmds 回执带设备响应",
+  "published": "2026-11-23"
 }
