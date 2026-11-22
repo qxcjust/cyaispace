@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.093",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.093.exe",
-  "size": 40192934,
-  "sha256": "748cc2cf6d7c86cb63aef91a217ae11741a040cff233dbbdfb4a9a4ea7a3c9d6",
-  "notes": "Slave 接口补暴露 12 项（version/GNSS/USS/APPLE/IMU/MPIC/WIFI/WIFI打流/WSHF/S3R/DEEP SLEEP/BT/Display FPS，snap 现取机制）；外设卡+圆点链路 presenter 化，拆「查询失败≠设备FAIL」字段",
+  "version": "0.2.0.094",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.094.exe",
+  "size": 40199931,
+  "sha256": "3650ad216ad1bfd87cacaf0f6adedbd4f5497634587a65256c916a874154bac3",
+  "notes": "Slave 取数接口再瘦一档：点名查询只回点名的项（available 改为 available_n）；snap 多项并行取数，4 项由 40s 降到 10s",
   "published": "2026-11-22"
 }
