@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.101",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.101.exe",
-  "size": 40206261,
-  "sha256": "137153d267a5d1d47eb29a0793c8d0235f4c1c22e958de2f89e01036ebd1e85f",
-  "notes": "STEP_RESULT.detail 回传设备正文；stop_cmds 回执带设备响应",
+  "version": "0.2.0.103",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.103.exe",
+  "size": 40220013,
+  "sha256": "0c7428a7aa020d08e3bd1fb1b9a34391e07ee76a9eb0a4f13bd508f18485531e",
+  "notes": "ADC 电压监听弹窗列宽上屏后重排（修右侧空白与表头截断）；STEP_RESULT.detail 回传设备正文",
   "published": "2026-11-23"
 }
