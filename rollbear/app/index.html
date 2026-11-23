@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rollbear · Android 安装包</title>
+<style>
+  :root{
+    --navy:#0b1220; --navy2:#13203a; --line:#22314f;
+    --tx:#e8eef9; --dim:#9fb3d1; --mute:#6b7f9e;
+    --amber:#f3ed36; --amber-d:#d9d31f;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; background:var(--navy); color:var(--tx);
+    font:15px/1.65 "Microsoft YaHei UI","Segoe UI",system-ui,sans-serif;
+    display:flex; align-items:center; justify-content:center; padding:32px 20px;
+  }
+  .card{
+    width:min(680px,100%); background:linear-gradient(160deg,#12213c,#0d1728);
+    border:1px solid var(--line); border-radius:16px; padding:36px 34px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+  }
+  h1{font-size:24px; margin:0 0 6px; letter-spacing:.3px}
+  .sub{color:var(--mute); font-size:13px; margin-bottom:26px}
+  .row{display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:22px}
+  .ver{
+    font-weight:700; color:#ffe98a; background:#0e1b30;
+    border:1px solid var(--line); border-radius:9px; padding:5px 12px; font-size:13px;
+  }
+  .btn{
+    display:inline-block; text-decoration:none; color:#150201; font-weight:700;
+    background:linear-gradient(180deg,var(--amber),var(--amber-d));
+    border:1px solid #b8b315; border-radius:9px; padding:10px 20px; font-size:14px;
+  }
+  .btn:hover{filter:brightness(1.06)}
+  .btn[aria-disabled="true"]{pointer-events:none; opacity:.45}
+  h2{font-size:13px; letter-spacing:1.4px; color:var(--mute); font-weight:700;
+     margin:26px 0 10px; text-transform:uppercase}
+  p.notes{color:var(--dim); font-size:14px; margin:0; white-space:pre-wrap}
+  ul{margin:0; padding-left:20px; color:var(--dim); font-size:14px}
+  li{margin:4px 0}
+  .note{
+    margin-top:24px; padding-top:16px; border-top:1px solid var(--line);
+    color:var(--mute); font-size:12.5px;
+  }
+  .note b{color:var(--dim); font-weight:600}
+  code{background:#0e1b30; border:1px solid var(--line); border-radius:5px;
+       padding:1px 6px; font-size:12px; color:#a9c6fb; word-break:break-all}
+  .err{color:#ff8f8f; font-size:13px; margin-top:18px; display:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>rollbear</h1>
+  <div class="sub">Android 安装包 · 内测分发<br>包名 <code>com.novi.rollbear</code></div>
+
+  <div class="row">
+    <span class="ver" id="ver">正在读取版本…</span>
+    <a class="btn" id="dl" href="#" aria-disabled="true">下载安装包</a>
+  </div>
+
+  <h2>更新说明</h2>
+  <p class="notes" id="notes">—</p>
+
+  <h2>安装步骤</h2>
+  <ul>
+    <li>点击上方按钮下载 APK（浏览器可能提示「此类文件可能有害」，选择「仍要下载」）。</li>
+    <li>在通知栏或文件管理器里点开 APK；首次安装需在系统弹窗中允许「安装未知应用」。</li>
+    <li>若手机已装旧版本，直接覆盖安装即可，本机数据（配对设备、我的方案、语言）会保留。</li>
+  </ul>
+
+  <div class="note">
+    <div>构建：<code id="build">—</code></div>
+    <div>大小：<span id="size">—</span> · 发布：<span id="pub">—</span></div>
+    <div>SHA-256：<code id="sha">—</code></div>
+  </div>
+
+  <div class="err" id="err">
+    版本清单读取失败（<code>latest.json</code> 不存在或格式异常）。<br>
+    请先运行 <code>publish_rollbear.bat</code> 发布一次安装包。
+  </div>
+</div>
+
+<script>
+(function () {
+  var verEl = document.getElementById('ver');
+  var dlEl = document.getElementById('dl');
+  var notesEl = document.getElementById('notes');
+  var buildEl = document.getElementById('build');
+  var sizeEl = document.getElementById('size');
+  var pubEl = document.getElementById('pub');
+  var shaEl = document.getElementById('sha');
+  var errEl = document.getElementById('err');
+
+  function mb(n) {
+    if (!n) return '—';
+    return (n / 1048576).toFixed(1) + ' MB';
+  }
+
+  fetch('latest.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function (d) {
+      verEl.textContent = '最新版本 v' + d.version + '（build ' + d.buildNumber + '）';
+      dlEl.href = d.file;
+      dlEl.setAttribute('download', d.file);
+      dlEl.removeAttribute('aria-disabled');
+      notesEl.textContent = d.notes || '—';
+      buildEl.textContent = d.buildId || '—';
+      sizeEl.textContent = mb(d.size);
+      pubEl.textContent = d.published || '—';
+      shaEl.textContent = d.sha256 || '—';
+    })
+    .catch(function () {
+      verEl.textContent = '暂无可用版本';
+      errEl.style.display = 'block';
+    });
+})();
+</script>
+</body>
+</html>

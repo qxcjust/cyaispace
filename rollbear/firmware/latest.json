@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "published": "2026-11-24",
+  "notes": "固件清单刷新 2026-11-24 00:43",
+  "chips": {
+    "esp32": {
+      "name": "ESP32",
+      "role": "ble",
+      "version": "1.14",
+      "display": "ev1.14",
+      "file": "IDM_esp32_ev1.14_v3_20261123_1012.bin",
+      "url": "https://www.cyaispace.tech/rollbear/firmware/IDM_esp32_ev1.14_v3_20261123_1012.bin",
+      "size": 623632,
+      "sha256": "45170cb1d16b50620375373e18258e0b005c95544e6ee06ee2c03267c0b69686"
+    },
+    "gd32": {
+      "name": "GD32",
+      "role": "motor",
+      "version": "1.19",
+      "display": "gd1.19",
+      "file": "IDM_GD32_App_gd1.19_20261123_1626.bin",
+      "url": "https://www.cyaispace.tech/rollbear/firmware/IDM_GD32_App_gd1.19_20261123_1626.bin",
+      "size": 90628,
+      "sha256": "204f7921741696b616089594aa890a0a10114d99a2f286c478e4c37332502fe0"
+    }
+  }
+}
