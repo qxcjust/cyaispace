@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.111",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.111.exe",
-  "size": 46448797,
-  "sha256": "9bf54caae6b37b696a6a9d36f0eed0ec55eeace9a99abd5924242ab1c11164c5",
-  "notes": "新增「AVB 音量调节」测试项：上位机直发二层帧调 AVB 音量（0~100，支持十进制/十六进制，EtherType 0xFFFE）；音频音源开关接真实命令（USB→AVB/VA6003、MIC 含 4 路测量读数、Tuner FM/AM 调谐）；播放/停止单按钮按状态切换；内置 Scapy（发帧需另装 Npcap）",
+  "version": "0.2.0.112",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.112.exe",
+  "size": 46437353,
+  "sha256": "d3065dde326439bab1b7ab17ad690a63a10edeb577388948ab98376db5f4c9e8",
+  "notes": "修复 DLT 同步落盘：切页不停写、录制流水账抗溢出（真机 800 条/秒不丢）、写盘失败自动续写；音源开关改真表格按状态切换。含 Win7 专用兼容包构建器（主线不受影响）。",
   "published": "2026-11-25"
 }
