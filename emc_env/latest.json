@@ -1,8 +1,8 @@
 {
-  "version": "0.2.0.103",
-  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.103.exe",
-  "size": 40220013,
-  "sha256": "0c7428a7aa020d08e3bd1fb1b9a34391e07ee76a9eb0a4f13bd508f18485531e",
-  "notes": "ADC 电压监听弹窗列宽上屏后重排（修右侧空白与表头截断）；STEP_RESULT.detail 回传设备正文",
-  "published": "2026-11-23"
+  "version": "0.2.0.111",
+  "url": "https://www.cyaispace.tech/emc_env/EMC-ENV-TestBench-Setup-0.2.0.111.exe",
+  "size": 46448797,
+  "sha256": "9bf54caae6b37b696a6a9d36f0eed0ec55eeace9a99abd5924242ab1c11164c5",
+  "notes": "新增「AVB 音量调节」测试项：上位机直发二层帧调 AVB 音量（0~100，支持十进制/十六进制，EtherType 0xFFFE）；音频音源开关接真实命令（USB→AVB/VA6003、MIC 含 4 路测量读数、Tuner FM/AM 调谐）；播放/停止单按钮按状态切换；内置 Scapy（发帧需另装 Npcap）",
+  "published": "2026-11-25"
 }
