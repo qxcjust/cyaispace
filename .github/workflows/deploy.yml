@@ -33,6 +33,11 @@ jobs:
           # Upload entire repository
           path: '.'
 
+      # 248MB 级产物上传成功后服务端处理有延迟，立刻部署会查不到
+      # github-pages 元数据（2026-11-25 实测三连挂）——等 90s 再部署。
+      - name: Wait for artifact processing
+        run: sleep 90
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
